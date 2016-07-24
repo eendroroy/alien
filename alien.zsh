@@ -37,19 +37,7 @@ _is_hg(){
 
 _hg_branch() {
   ref=$(hg branch 2> /dev/null) || return true;
-  if [[ $SHOW_HG_REV == 1 ]]; then
-    rev=$(hg log --template '{rev}:{node|short} [{author}] {desc|firstline}' -l 1 | awk -F ":" '{print $1}');
-    current_rev=$(hg parent 2>/dev/null | grep changeset | awk '{print $2}' | awk -F ":" '{print $1}')
-    if [[ $rev > $current_rev ]]; then flag=1; fi
-    if [[ $rev == $current_rev ]]; then flag=2; fi
-    if [[ $rev < $current_rev ]]; then flag=3; fi
-    if [[ $flag == 1 ]]; then rev=" [⬆ ${rev}] "; fi
-    if [[ $flag == 2 ]]; then rev=""; fi
-    if [[ $flag == 3 ]]; then rev=" [⬇ ${rev}] "; fi
-    echo " HG:  ${ref} @R: ${current_rev}${rev} ";
-  else
-    echo " HG:  ${ref} ";
-  fi
+  echo " HG:  ${ref} ";
   return true;
 }
 
