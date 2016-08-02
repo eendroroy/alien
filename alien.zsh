@@ -65,8 +65,6 @@ __date_time_info(){
   echo "`date +%r`";
 }
 
-
-
 alien0(){
   if [[ $ALIEN_THEME == "red" ]]; then
     color0=088    # time bg
@@ -132,3 +130,4 @@ alien_prompts(){
 
 autoload -U add-zsh-hook
 alien_prompts
+
