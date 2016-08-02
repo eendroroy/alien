@@ -44,16 +44,12 @@ _hg_branch() {
 _vcs_info(){
   if [[ $(_is_git) == 1 ]]; then
     _git_branch;
+  elif [[ $(_is_hg) == 1 ]]; then
+    _hg_branch;
+  elif [[ $(_is_svn) == 1 ]]; then
+    _svn_branch;
   else
-    if [[ $(_is_hg) == 1 ]]; then
-      _hg_branch;
-    else
-      if [[ $(_is_svn) == 1 ]]; then
-        _svn_branch;
-      else
-        echo " ";
-      fi
-    fi
+    echo " ";
   fi
 }
 
