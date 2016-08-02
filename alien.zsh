@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 __color_man_page(){
   export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
