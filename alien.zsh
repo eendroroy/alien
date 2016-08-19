@@ -68,6 +68,7 @@ __date_time_info(){
 __ssh_client(){
   if [ -n "$SSH_CLIENT" ]; then
     echo $SSH_CLIENT | awk '{print $1}';
+	echo " ";
   fi
 }
 
