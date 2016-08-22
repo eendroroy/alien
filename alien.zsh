@@ -71,6 +71,12 @@ __ssh_client(){
   fi
 }
 
+__battery_percent(){
+  if [[ -f "" ]]; then
+    echo " (B: `upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'`)";
+  fi
+}
+
 alien0(){
   if [[ $ALIEN_THEME == "red" ]]; then
     color0=088    # time bg
@@ -126,7 +132,7 @@ alien0(){
   _user=`whoami`
   setopt promptsubst
   PROMPT='
-%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(__date_time_info) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %5~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`_vcs_info`%f%k%F{$color7}%f
+  %(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(__date_time_info)$(__battery_percent) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %5~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`_vcs_info`%f%k%F{$color7}%f
 %F{$color3}$(__ssh_client)%f%F{$color8}%B❱%b%f '
 }
 
