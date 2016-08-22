@@ -74,7 +74,7 @@ __ssh_client(){
 __battery_percent(){
   __bat_per=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}' | sed "s|%||g"`;
   if [[ -n $__bat_per ]]; then
-    echo " (B: ${__bat_per} )";
+    echo " (B: ${__bat_per})";
   fi
 }
 
