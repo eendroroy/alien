@@ -71,10 +71,15 @@ __ssh_client(){
   fi
 }
 
-__battery_percent(){
+__battery_stat(){
+  __bat_power=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print $2}'`;
+  __bat_power_ind="";
+  if [[ $__bat_power = "charging" ]]; then __bat_power_ind="+ ";
+  elif [[ $__bat_power = "discharging" ]]; then __bat_power_ind="- ";
+  elif [[ $__bat_power = "fully-charged" ]]; then __bat_power_ind="◉ ";
   __bat_per=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}' | sed "s|%||g"`;
   if [[ -n $__bat_per ]]; then
-    echo " (B: ${__bat_per})";
+    echo " (B: ${__bat_power_ind}${__bat_per})";
   fi
 }
 
@@ -133,7 +138,7 @@ alien0(){
   _user=`whoami`
   setopt promptsubst
   PROMPT='
-%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(__date_time_info)$(__battery_percent) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %5~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`_vcs_info`%f%k%F{$color7}%f
+%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(__date_time_info)$(__battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %5~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`_vcs_info`%f%k%F{$color7}%f
 %F{$color3}$(__ssh_client)%f%F{$color8}%B❱%b%f '
 }
 
