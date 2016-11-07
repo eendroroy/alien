@@ -73,7 +73,7 @@ __ssh_client(){
 
 __battery_stat(){
   __os=`uname`;
-  if [ $__os == "Linux" ]; then
+  if [[ $__os = "Linux" ]]; then
     if which upower > /dev/null ; then
       __bat_power=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print $2}'`;
       __bat_power_ind="";
@@ -87,7 +87,7 @@ __battery_stat(){
       fi
     fi
   fi
-  if [ $__os == "Darwin" ]; then
+  if [[ $__os = "Darwin" ]]; then
     __bat_power=`pmset -g batt | tail -1 | awk '{print $4}' | tr -d "%;"`;
     __bat_power_ind="";
     if [[ $__bat_power = "charging" ]]; then __bat_power_ind="+";
