@@ -75,7 +75,7 @@ __battery_stat(){
   if which upower > /dev/null ; then
     __bat_power=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print $2}'`;
     if [[ -n $__bat_power ]]; then
-        __bat_power=`pmset -g batt | tail -1 | awk '{print $4}' | tr "%;" " "`;
+      __bat_power=`pmset -g batt | tail -1 | awk '{print $4}' | tr -d "%;"`;
     fi
     __bat_power_ind="";
     if [[ $__bat_power = "charging" ]]; then __bat_power_ind="+";
@@ -84,7 +84,7 @@ __battery_stat(){
     fi
     __bat_per=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}' | sed "s|%||g"`;
     if [[ -n $__bat_per ]]; then
-        __bat_per=`pmset -g batt | tail -1 | awk '{print $3}' | tr "%;" " "`
+      __bat_per=`pmset -g batt | tail -1 | awk '{print $3}' | tr -d "%;"`
     fi
     if [[ -n $__bat_per ]]; then
       echo " | ${__bat_power_ind}${__bat_per}";
