@@ -92,7 +92,7 @@ __battery_stat(){
     __bat_power_ind="";
     if [[ $__bat_power = "charging" ]]; then __bat_power_ind="+";
     elif [[ $__bat_power = "discharging" ]]; then __bat_power_ind="-";
-    elif [[ $__bat_power = "fully-charged" ]]; then __bat_power_ind="•";
+    elif [[ $__bat_power = "charged" ]]; then __bat_power_ind="•";
     fi
        __bat_per=`pmset -g batt | tail -1 | awk '{print $3}' | tr -d "%;"`
     if [[ -n $__bat_per ]]; then
