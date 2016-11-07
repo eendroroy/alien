@@ -87,7 +87,7 @@ __battery_stat(){
       fi
     fi
   fi
-  if [ $__os == "Darwin" ]
+  if [ $__os == "Darwin" ]; then
     __bat_power=`pmset -g batt | tail -1 | awk '{print $4}' | tr -d "%;"`;
     __bat_power_ind="";
     if [[ $__bat_power = "charging" ]]; then __bat_power_ind="+";
