@@ -12,3 +12,4 @@
   
     export ALIEN_THEME="red"
 -![screenshot](https://37741456de13b77259d97e8954e396ca5ffef70e.googledrive.com/host/0BxmtTHlAYA4AVDJOby1zY3FpR2M/alien_red.png "red")
+
