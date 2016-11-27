@@ -49,7 +49,7 @@ _vcs_info(){
   elif [[ $(_is_svn) == 1 ]]; then
     _svn_branch;
   else
-    echo " ";
+    echo "  ";
   fi
 }
 
