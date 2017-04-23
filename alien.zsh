@@ -186,10 +186,10 @@ alien0(){
   fi
 
   RPROMPT=''
-  if [[ -z $DEFAULT_USER ]]; then
-    _user=`whoami`
+  if [[ $DEFAULT_USER == $USER ]]; then
+    _user=''
   else
-    _user=""
+    _user=`whoami`
   fi
   
   setopt promptsubst
