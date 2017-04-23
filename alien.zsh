@@ -186,7 +186,12 @@ alien0(){
   fi
 
   RPROMPT=''
-  _user=`whoami`
+  if [[ -z $DEFAULT_USER ]]; then
+    _user=`whoami`
+  else
+    _user=""
+  fi
+  
   setopt promptsubst
   PROMPT='
 %(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(__date_time_info)$(__battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %3~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`_vcs_info`%f%k%F{$color7}%f
