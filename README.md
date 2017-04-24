@@ -8,4 +8,17 @@ add in your .zshrc
 #### screenshot
 -![screenshot](https://github.com/eendroroy/alien/raw/images/images/alien-mac.png "alien")
 
+###### color scheme
+you can chose from 3 differnt color scheme (blue is the default)
+
+just add any from the following three lines before your 'antigen theme ...' line
+
+    export ALIEN_THEME="blue"
+
+    export ALIEN_THEME="green"
+
+    export ALIEN_THEME="red"
+
+
+
 Credit goes to [@chrissicool](https://github.com/chrissicool) for ['256color'](https://github.com/chrissicool/zsh-256color)
