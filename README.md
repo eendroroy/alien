@@ -1,8 +1,9 @@
 # alien
+[![Join the chat at https://gitter.im/eendroroy/alien](https://badges.gitter.im/eendroroy/alien.svg)](https://gitter.im/eendroroy/alien?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### Installation
 ##### antigen
 
-[![Join the chat at https://gitter.im/eendroroy/alien](https://badges.gitter.im/eendroroy/alien.svg)](https://gitter.im/eendroroy/alien?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 add in your .zshrc
 
     antigen theme eendroroy/alien alien
