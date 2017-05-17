@@ -2,7 +2,7 @@
 
 _zsh_terminal_set_256color() {
   if [[ "$TERM" =~ "-256color$" ]] ; then
-    [[ -n "${ZSH_256COLOR_DEBUG}" ]] && echo "zsh-256color: 256 color terminal already set." >&2
+    [[ -n "${ZSH_256COLOR_DEBUG}" ]] && echo -n "zsh-256color: 256 color terminal already set." >&2
     return
   fi
 
@@ -43,33 +43,38 @@ _colorize(){
 }
 
 _is_svn(){
-  if [[ $(svn info 2>/dev/null) != "" ]]; then echo 1 ; else echo 0 ; fi
+  if [[ $(svn info 2>/dev/null) != "" ]]; then echo -n 1 ; else echo -n 0 ; fi
 }
 
 _svn_branch() {
   ref=$(svn info 2>/dev/null | grep Revision | awk '{print $2}') || return false;
-  echo " SVN: @${ref} ";
+  echo -n " SVN: @${ref} ";
   return true;
 }
 
 _is_git(){
-  if [[ $(git branch 2>/dev/null) != "" ]]; then echo 1 ; else echo 0 ; fi
+  if [[ $(git branch 2>/dev/null) != "" ]]; then echo -n 1 ; else echo -n 0 ; fi
+}
+
+_git_branch_name() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --short HEAD 2> /dev/null) || return false;
+  echo -n "${ref#refs/heads/}";
+  return true;
 }
 
 _git_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(git rev-parse --short HEAD 2> /dev/null) || return false;
-  echo " GIT:  ${ref#refs/heads/} ";
+  echo -n " GIT:  $(_git_branch_name) ";
   return true;
 }
 
 _is_hg(){
-  if [[ $(hg branch 2>/dev/null) != "" ]]; then echo 1 ; else echo 0 ; fi
+  if [[ $(hg branch 2>/dev/null) != "" ]]; then echo -n 1 ; else echo -n 0 ; fi
 }
 
 _hg_branch() {
   ref=$(hg branch 2> /dev/null) || return true;
-  echo " HG:  ${ref} ";
+  echo -n " HG:  ${ref} ";
   return true;
 }
 
@@ -81,7 +86,34 @@ _vcs_info(){
   elif [[ $(_is_svn) == 1 ]]; then
     _svn_branch;
   else
-    echo " ";
+    echo -n " ";
+  fi
+}
+
+_vcs_lr(){
+  if [[ $(_is_git) == 1 ]]; then
+    _pull=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $2}' | tr -d ' ');
+    _push=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $1}' | tr -d ' ');
+    [[ "$_pull" != "0" ]] && echo -n "⇣ ";
+    [[ "$_push" != "0" ]] && echo -n "⇡ ";
+    echo -n "";
+  else
+    echo -n "";
+  fi
+}
+
+_vcs_dirty(){
+  if [[ $(_is_git) == 1 ]]; then
+    _mod=$(git status --porcelain 2>/dev/null | grep M | wc -l | tr -d ' ');
+    _add=$(git status --porcelain 2>/dev/null | grep A | wc -l | tr -d ' ');
+    _del=$(git status --porcelain 2>/dev/null | grep D | wc -l | tr -d ' ');
+    _new=$(git status --porcelain 2>/dev/null | grep '??' | wc -l | tr -d ' ');
+    [[ "$_mod" != "0" ]] && echo -n "⭑ ";
+    [[ "$_add" != "0" ]] && echo -n "+ ";
+    [[ "$_del" != "0" ]] && echo -n "- ";
+    [[ "$_new" != "0" ]] && echo -n "? ";
+  else
+    echo -n "";
   fi
 }
 
@@ -91,15 +123,15 @@ __storage_info(){
   used=`df -h . | tail -1 | awk '{print $3}' | sed "s|\.|•|g" `;
   usedp=`df -h . | tail -1 | awk '{print $5}' | sed "s|\.|•|g" `;
   free=`df -h . | tail -1 | awk '{print $4}' | sed "s|\.|•|g" `;
-  echo "💾 $fs - F:$free U:$used T:$size";
+  echo -n "💾 $fs - F:$free U:$used T:$size";
 }
 __date_time_info(){
-  echo "`date +%r`";
+  echo -n "`date +%r`";
 }
 
 __ssh_client(){
   if [ -n "$SSH_CLIENT" ]; then
-    echo $SSH_CLIENT | awk {'print $1 " "'};
+    echo -n $SSH_CLIENT | awk {'print $1 " "'};
   fi
 }
 
@@ -115,7 +147,7 @@ __battery_stat(){
       fi
       __bat_per=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}' | sed "s|%||g"`;
       if [[ -n $__bat_per ]]; then
-        echo " | ${__bat_power_ind}${__bat_per}";
+        echo -n " | ${__bat_power_ind}${__bat_per}";
       fi
     fi
   fi
@@ -129,7 +161,7 @@ __battery_stat(){
     fi
        __bat_per=`pmset -g batt | tail -1 | awk '{print $3}' | tr -d "%;"`
     if [[ -n $__bat_per ]]; then
-      echo " | ${__bat_power_ind}${__bat_per}";
+      echo -n " | ${__bat_power_ind}${__bat_per}";
     fi
   fi
 }
@@ -184,6 +216,10 @@ alien0(){
     color8=228    # prompt fg
     color9=051    # vcs fg
   fi
+  color10=245     # lr bg
+  color11=255     # lr fg
+  color12=253     # dirty copy bg
+  color13=016     # dirty copy fg
 
   RPROMPT=''
   if [[ $DEFAULT_USER == $USER ]]; then
@@ -194,7 +230,7 @@ alien0(){
   
   setopt promptsubst
   PROMPT='
-%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(__date_time_info)$(__battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %3~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`_vcs_info`%f%k%F{$color7}%f
+%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(__date_time_info)$(__battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %3~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`_vcs_info`%f%k%K{$color10}%F{$color7}%f%k%K{$color10}%F{$color11} $(_vcs_lr)%f%k%K{$color12}%F{$color10}%f%k%K{$color12}%F{$color13} $(_vcs_dirty)%f%k%F{$color12}%f
 %F{$color3}$(__ssh_client)%f%F{$color8}%B❱%b%f '
 }
 
@@ -205,5 +241,3 @@ alien_prompts(){
 _colorize()
 autoload -U add-zsh-hook
 alien_prompts
-
-
