@@ -96,7 +96,6 @@ _vcs_lr(){
     _push=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $1}' | tr -d ' ');
     [[ "$_pull" != "0" ]] && echo -n "⇣ ";
     [[ "$_push" != "0" ]] && echo -n "⇡ ";
-    echo -n "";
   else
     echo -n "";
   fi
