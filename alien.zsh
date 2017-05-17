@@ -58,7 +58,7 @@ _is_git(){
 
 _git_branch_name() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(git rev-parse --short HEAD 2> /dev/null) || return false;
+  ref="detached" || return false;
   echo -n "${ref#refs/heads/}";
   return true;
 }
@@ -92,10 +92,12 @@ _vcs_info(){
 
 _vcs_lr(){
   if [[ $(_is_git) == 1 ]]; then
-    _pull=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $2}' | tr -d ' ');
-    _push=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $1}' | tr -d ' ');
-    [[ "$_pull" != "0" ]] && echo -n "⇣ ";
-    [[ "$_push" != "0" ]] && echo -n "⇡ ";
+    if [[ 4(_git_branch_name) != "detached" ]]; then
+      _pull=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $2}' | tr -d ' ');
+      _push=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $1}' | tr -d ' ');
+      [[ "$_pull" != "0" ]] && echo -n "⇣ ";
+      [[ "$_push" != "0" ]] && echo -n "⇡ ";
+    fi
   else
     echo -n "";
   fi
