@@ -25,3 +25,5 @@ just add any from the following three lines before your 'antigen theme ...' line
 
 
 Credit goes to [@chrissicool](https://github.com/chrissicool) for ['256color'](https://github.com/chrissicool/zsh-256color)
+Credit goes to [@mafredri](https://github.com/mafredri) for ['zsh-async'](https://github.com/mafredri/zsh-async)
+
