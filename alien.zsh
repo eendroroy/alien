@@ -588,10 +588,10 @@ _vcs_info(){
 _vcs_lr(){
   if [[ $(_is_git) == 1 ]]; then
     if [[ 4(_git_branch_name) != "detached" ]]; then
-      _pull=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $2}' | tr -d ' ');
-      _push=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` | awk '{print $1}' | tr -d ' ');
-      [[ "$_pull" != "0" ]] && echo -n "⇣ ";
-      [[ "$_push" != "0" ]] && echo -n "⇡ ";
+      _pull=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` 2>/dev/null | awk '{print $2}' | tr -d ' \n');
+      _push=$(git rev-list --left-right --count `_git_branch_name`...origin/`_git_branch_name` 2>/dev/null | awk '{print $1}' | tr -d ' \n');
+      [[ "$_pull" != "0" ]] && [[ "$_pull" != "" ]] && echo -n "⇣ ";
+      [[ "$_push" != "0" ]] && [[ "$_push" != "" ]] && echo -n "⇡ ";
     fi
   else
     echo -n "";
