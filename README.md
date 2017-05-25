@@ -17,7 +17,7 @@ add in your .zshrc
 
 ###### color scheme
 
-you can chose from 3 differnt color scheme (blue is the default)
+you can chose from 3 different color schemes (blue is the default)
 
 just add any from the following three lines before your 'antigen theme ...' line
 
