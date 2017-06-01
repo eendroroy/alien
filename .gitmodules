@@ -1,6 +1,6 @@
-[submodule "libs/zsh-256color"]
-	path = libs/zsh-256color
-	url = git@github.com:chrissicool/zsh-256color.git
 [submodule "libs/zsh-async"]
 	path = libs/zsh-async
-	url = git@github.com:mafredri/zsh-async.git
+	url = https://github.com/mafredri/zsh-async.git
+[submodule "libs/zsh-256color"]
+	path = libs/zsh-256color
+	url = https://github.com/chrissicool/zsh-256color.git
