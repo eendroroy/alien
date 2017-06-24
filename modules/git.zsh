@@ -5,7 +5,7 @@ alien_is_git(){
 }
 
 alien_git_branch_name() {
-  echo -n "${plib_git_branch}";
+  echo -n "`plib_git_branch`";
 }
 
 alien_git_branch() {
