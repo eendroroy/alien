@@ -4,3 +4,6 @@
 [submodule "libs/zsh-256color"]
 	path = libs/zsh-256color
 	url = https://github.com/chrissicool/zsh-256color.git
+[submodule "libs/promptlib"]
+	path = libs/promptlib
+	url = https://github.com/eendroroy/promptlib-zsh.git
