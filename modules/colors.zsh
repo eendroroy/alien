@@ -54,3 +54,4 @@ color10=245     # lr bg
 color11=255     # lr fg
 color12=253     # dirty copy bg
 color13=016     # dirty copy fg
+color14=245     # venv color
