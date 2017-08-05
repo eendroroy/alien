@@ -7,15 +7,17 @@
 
 ### Installation
 
-##### antigen
+Add the following line to your .zshrc depending on your zsh plugin manager
 
-add in your .zshrc
+##### [antigen](https://github.com/zsh-users/antigen):
 
     antigen theme eendroroy/alien alien
 
-##### oh-my-zsh
+##### [zgen](https://github.com/tarjoilija/zgen):
 
-- [**see here**](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#overriding-and-adding-themes)
+    zgen load eendroroy/alien
+
+##### [oh-my-zsh: Overriding and Adding Themes](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#overriding-and-adding-themes)
 
 #### screencast
 
