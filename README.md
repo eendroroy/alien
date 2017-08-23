@@ -17,6 +17,10 @@ Add the following line to your .zshrc depending on your zsh plugin manager
 
     zgen load eendroroy/alien
 
+##### [zplug](https://github.com/zplug/zplug):
+
+    zplug "eendroroy/alien"
+
 ##### [oh-my-zsh: Overriding and Adding Themes](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#overriding-and-adding-themes)
 
 #### screencast
