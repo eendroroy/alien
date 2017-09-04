@@ -1,5 +1,10 @@
 # alien
 
+alien theme is faster than a lot other themes. Why? It updates part of the prompt asyncronously. The time consuming processings like git status checking, git dirty copy checking etc. asynchronously. It starts a background job for these process, and in the mean time draws initial prompt and lets you use the terminal as you would normally.
+
+alien theme is independent of any library like Oh-My-Zsh or Prezto. Whatever it needs already included inside. The only
+exception is font. You need to install the powerline patched fonts to properly dysplay the prompt.
+
 ### Requirements
 
 - zsh (obviously)
