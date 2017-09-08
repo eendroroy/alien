@@ -50,7 +50,7 @@ else
   color8=228    # prompt fg
   color9=051    # vcs fg
 fi
-color10=245     # lr bg
+color10=244     # lr bg
 color11=255     # lr fg
 color12=253     # dirty copy bg
 color13=016     # dirty copy fg
