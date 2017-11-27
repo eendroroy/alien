@@ -13,12 +13,12 @@
 
 alien theme is **independent** of any library like Oh-My-Zsh or Prezto. Whatever it needs already included inside. The only exception is font. You need to **install the powerline patched fonts** to properly display the prompt.
 
-### Requirements
+## Requirements
 
 - zsh (obviously)
 - powerline patched fonts [**see here**](https://github.com/powerline/fonts)
 
-### Installation
+## Installation
 
 Add the following line to your .zshrc depending on your zsh plugin manager
 
@@ -44,7 +44,7 @@ cd alien
 git submodule update --init --recursive
 ```
 
-#### screencast
+## screencast
 
 [![asciicast](https://asciinema.org/a/121489.png)](https://asciinema.org/a/121489)
 
@@ -60,7 +60,38 @@ in ~/.zshrc just add any from the following three lines before your 'antigen the
 
     export ALIEN_THEME="red"
 
-Credit goes to [@chrissicool](https://github.com/chrissicool) for ['zsh-256color'](https://github.com/chrissicool/zsh-256color)
+**Custom Color**
 
-Credit goes to [@mafredri](https://github.com/mafredri) for ['zsh-async'](https://github.com/mafredri/zsh-async)
+```bash
+color0=018      # time background color
+color1=226      # normal background color
+color1r=196     # normal error background color
+color2=254      # time foreground color
+color3=026      # user background color
+color4=254      # user foreground color
+color5=045      # dir background color
+color6=019      # dir foreground color
+color7=238      # vcs background color
+color8=228      # prompt foreground color
+color9=051      # vcs foreground color
+color10=244     # git left-right background color
+color11=255     # git left-right foreground color
+color12=253     # dirty copy background color
+color13=016     # dirty copy foreground color
+color14=245     # venv color
+```
 
+
+## Libraries Used
+
+- ['256color'](https://github.com/chrissicool/zsh-256color) by **[@chrissicool](https://github.com/chrissicool)**
+- ['zsh-async'](https://github.com/mafredri/zsh-async) by **[@mafredri](https://github.com/mafredri)**
+- ['promptlib-zsh'](https://github.com/eendroroy/promptlib-zsh) by **[@eendroroy](https://github.com/eendroroy)**
+
+## Author
+
+* **indrajit** - *Owner* - [eendroroy](https://github.com/eendroroy)
+
+## License
+
+The project is available as open source under the terms of the [GPL-3.0 License](https://opensource.org/licenses/GPL-3.0).
