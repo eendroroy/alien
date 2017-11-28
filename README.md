@@ -50,6 +50,8 @@ git submodule update --init --recursive
 
 ###### color scheme
 
+**add all configurations before plugin definitions**
+
 you can chose from 3 different color schemes (blue is the default)
 
 in ~/.zshrc just add any from the following three lines before your 'antigen theme ...' line
@@ -81,6 +83,11 @@ color13=016     # dirty copy foreground color
 color14=245     # venv color
 ```
 
+###### nerd font
+
+Enable Nerd Font
+
+    export USE_NERD_FONT=1
 
 ## Libraries Used
 
