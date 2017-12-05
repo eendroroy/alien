@@ -89,6 +89,8 @@ Enable Nerd Font
 
     export USE_NERD_FONT=1
 
+_*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
+
 ## Libraries Used
 
 - ['256color'](https://github.com/chrissicool/zsh-256color) by **[@chrissicool](https://github.com/chrissicool)**
