@@ -93,6 +93,25 @@ Enable Nerd Font
 
 _*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
 
+### promptlib-zsh Configs:
+
+#### customize symbols
+
+    export PLIB_GIT_ADD_SYM=+
+    export PLIB_GIT_DEL_SYM=-
+    export PLIB_GIT_MOD_SYM=⭑
+    export PLIB_GIT_NEW_SYM=?
+    export PLIB_GIT_PUSH_SYM=↑
+    export PLIB_GIT_PULL_SYM=↓
+
+_Note: this overrides `USE_NERD_FONT` configuration._
+
+#### customize colors
+
+    export PLIB_GIT_TRACKED_COLOR=green
+    export PLIB_GIT_UNTRACKED_COLOR=red
+
+
 ## Libraries Used
 
 - ['256color'](https://github.com/chrissicool/zsh-256color) by **[@chrissicool](https://github.com/chrissicool)**
