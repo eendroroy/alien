@@ -5,5 +5,5 @@ alien_is_svn(){
 }
 
 alien_svn_branch() {
-  echo -n " ${AM_HG_SYM}: @`plib_svn_rev` ";
+  echo -n " ${ALIEN_HG_SYM}: @`plib_svn_rev` ";
 }
