@@ -97,6 +97,11 @@ _*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
 
 #### customize symbols
 
+    export ALIEN_GIT_SYM=G
+    export ALIEN_HG_SYM=H
+    export ALIEN_SVN_SYM=S
+    export ALIEN_BRANCH_SYM=
+    # Symbols from promptlib
     export PLIB_GIT_ADD_SYM=+
     export PLIB_GIT_DEL_SYM=-
     export PLIB_GIT_MOD_SYM=⭑
