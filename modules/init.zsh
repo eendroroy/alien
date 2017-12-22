@@ -8,8 +8,8 @@ if [[ $USE_NERD_FONT = 1 ]]; then
   [[ -z "${PLIB_GIT_NEW_SYM}" ]]  && PLIB_GIT_NEW_SYM=
   [[ -z "${PLIB_GIT_PUSH_SYM}" ]] && PLIB_GIT_PUSH_SYM=
   [[ -z "${PLIB_GIT_PULL_SYM}" ]] && PLIB_GIT_PULL_SYM=
-  [[ -z "${ALIEN_BRANCH_SYM}" ]]  && ALIEN_BRANCH_SYM=
   [[ -z "${ALIEN_HG_SYM}" ]]      && ALIEN_HG_SYM=
+  [[ -z "${ALIEN_BRANCH_SYM}" ]]  && ALIEN_BRANCH_SYM=
 fi
 
 [[ -z "${ALIEN_GIT_SYM}" ]]     && ALIEN_GIT_SYM=G
