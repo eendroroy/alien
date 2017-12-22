@@ -9,7 +9,7 @@ alien_git_branch_name() {
 }
 
 alien_git_branch() {
-  echo -n " ${ALIEN_GIT_SYM}: $(alien_git_branch_name) ";
+  echo -n " ${ALIEN_GIT_SYM}: ${ALIEN_BRANCH_SYM} $(alien_git_branch_name) ";
   return true;
 }
 
