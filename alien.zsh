@@ -8,7 +8,7 @@ source "${THEME_ROOT}/libs/promptlib/activate"
 source "${THEME_ROOT}/libs/zsh-async/async.zsh"
 source "${THEME_ROOT}/libs/zsh-256color/zsh-256color.plugin.zsh"
 
-source "${THEME_ROOT}/modules/colors.zsh"
+source "${THEME_ROOT}/modules/theme.zsh"
 source "${THEME_ROOT}/modules/system.zsh"
 source "${THEME_ROOT}/modules/git.zsh"
 source "${THEME_ROOT}/modules/hg.zsh"
