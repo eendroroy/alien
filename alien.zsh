@@ -19,6 +19,7 @@ source "${THEME_ROOT}/modules/python.zsh"
 function precmd(){
   autoload -U add-zsh-hook
   setopt prompt_subst
+  alien_load_theme
 
   RPROMPT=''
   if [[ "${DEFAULT_USER}" == "${USER}" ]]; then
