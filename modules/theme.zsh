@@ -3,14 +3,10 @@
 THEME_DIR="${0:A:h}/themes"
 
 alien_load_theme(){
-  if [[ "${ALIEN_THEME}" == "red" ]]; then
-    source "${THEME_DIR}/red.zsh"
-  elif [[ "${ALIEN_THEME}" == "green" ]]; then
-    source "${THEME_DIR}/green.zsh"
-  elif [[ "${ALIEN_THEME}" == "blue" ]]; then
+  if [[ -z "${ALIEN_THEME}" ]]; then
     source "${THEME_DIR}/blue.zsh"
   else
-    source "${THEME_DIR}/red.zsh"
+    source "${THEME_DIR}/${ALIEN_THEME}.zsh"
   fi
   alien_theme
 
