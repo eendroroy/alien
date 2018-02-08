@@ -59,9 +59,22 @@ in ~/.zshrc just add any from the following three lines before your 'antigen the
 
     export ALIEN_THEME="blue"
 
+![blue](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/blue.png)
+
+
     export ALIEN_THEME="green"
 
+![green](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/green.png)
+
+
     export ALIEN_THEME="red"
+
+![red](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/red.png)
+
+
+    export ALIEN_THEME="soft"
+
+![soft](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/soft.png)
 
 **Custom Color**
 
