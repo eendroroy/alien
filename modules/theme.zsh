@@ -24,4 +24,7 @@ alien_load_theme(){
   [[ -z $color12 ]] && color12=253     # dirty copy bg
   [[ -z $color13 ]] && color13=016     # dirty copy fg
   [[ -z $color14 ]] && color14=245     # venv color
+
+  [[ -z "${PLIB_GIT_TRACKED_COLOR}" ]]   && PLIB_GIT_TRACKED_COLOR=27
+  [[ -z "${PLIB_GIT_UNTRACKED_COLOR}" ]] && PLIB_GIT_UNTRACKED_COLOR=236
 }
