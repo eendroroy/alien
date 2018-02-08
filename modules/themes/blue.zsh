@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-alien_load_blue_theme(){
+alien_theme(){
   [[ -z $color0 ]]  && color0=018    # time bg
   [[ -z $color1 ]]  && color1=226    # init bg
   [[ -z $color1r ]] && color1r=196   # init bg error
