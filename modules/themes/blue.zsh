@@ -12,4 +12,7 @@ alien_theme(){
   [[ -z $color7 ]]  && color7=238    # vcs bg
   [[ -z $color8 ]]  && color8=228    # prompt fg
   [[ -z $color9 ]]  && color9=051    # vcs fg
+  
+  [[ -z "${PLIB_GIT_TRACKED_COLOR}" ]]   && PLIB_GIT_TRACKED_COLOR=27
+  [[ -z "${PLIB_GIT_UNTRACKED_COLOR}" ]] && PLIB_GIT_UNTRACKED_COLOR=236
 }
