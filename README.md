@@ -5,7 +5,6 @@
 [![Contributors](https://img.shields.io/github/contributors/eendroroy/alien.svg)](https://github.com/eendroroy/alien/graphs/contributors)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/eendroroy/alien/master.svg)](https://github.com/eendroroy/alien)
 [![license](https://img.shields.io/github/license/eendroroy/alien.svg)](https://github.com/eendroroy/alien/blob/master/LICENSE)
-
 [![GitHub issues](https://img.shields.io/github/issues/eendroroy/alien.svg)](https://github.com/eendroroy/alien/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/eendroroy/alien.svg)](https://github.com/eendroroy/alien/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/eendroroy/alien.svg)](https://github.com/eendroroy/alien/pulls)
@@ -83,6 +82,39 @@ color11=255     # git left-right foreground color
 color12=253     # dirty copy background color
 color13=016     # dirty copy foreground color
 color14=245     # venv color
+```
+
+Or creating a new theme file:
+
+__/path/to/custom/theme.zsh__
+
+```
+#!/usr/bin/env zsh
+
+alien_theme(){
+  [[ -z $color0 ]]  && color0=018    # time bg
+  [[ -z $color1 ]]  && color1=226    # init bg
+  [[ -z $color1r ]] && color1r=196   # init bg error
+  [[ -z $color2 ]]  && color2=254    # time fg
+  [[ -z $color3 ]]  && color3=026    # user bg
+  [[ -z $color4 ]]  && color4=254    # user fg
+  [[ -z $color5 ]]  && color5=045    # dir bg
+  [[ -z $color6 ]]  && color6=019    # dir fg
+  [[ -z $color7 ]]  && color7=238    # vcs bg
+  [[ -z $color8 ]]  && color8=228    # prompt fg
+  [[ -z $color9 ]]  && color9=051    # vcs fg
+  [[ -z $color10 ]] && color10=244   # lr bg
+  [[ -z $color11 ]] && color11=255   # lr fg
+  [[ -z $color12 ]] && color12=253   # dirty copy bg
+  [[ -z $color13 ]] && color13=016   # dirty copy fg
+  [[ -z $color14 ]] && color14=245   # venv color
+}
+```
+
+Then activate the theme using:
+
+```
+export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
 ```
 
 ###### nerd font
