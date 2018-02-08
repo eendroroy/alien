@@ -1,55 +1,19 @@
 #!/usr/bin/env zsh
 
-alien_load_blue_theme(){
-  [[ -z $color0 ]]  && color0=018    # time bg
-  [[ -z $color1 ]]  && color1=226    # init bg
-  [[ -z $color1r ]] && color1r=196   # init bg error
-  [[ -z $color2 ]]  && color2=254    # time fg
-  [[ -z $color3 ]]  && color3=026    # user bg
-  [[ -z $color4 ]]  && color4=254    # user fg
-  [[ -z $color5 ]]  && color5=045    # dir bg
-  [[ -z $color6 ]]  && color6=019    # dir fg
-  [[ -z $color7 ]]  && color7=238    # vcs bg
-  [[ -z $color8 ]]  && color8=228    # prompt fg
-  [[ -z $color9 ]]  && color9=051    # vcs fg
-}
-
-alien_load_red_theme(){
-  [[ -z $color0 ]]  && color0=088    # time bg
-  [[ -z $color1 ]]  && color1=226    # init bg
-  [[ -z $color1r ]] && color1r=196   # init bg error
-  [[ -z $color2 ]]  && color2=254    # time fg
-  [[ -z $color3 ]]  && color3=202    # user bg
-  [[ -z $color4 ]]  && color4=232    # user fg
-  [[ -z $color5 ]]  && color5=214    # dir bg
-  [[ -z $color6 ]]  && color6=232    # dir fg
-  [[ -z $color7 ]]  && color7=238    # vcs bg
-  [[ -z $color8 ]]  && color8=228    # prompt fg
-  [[ -z $color9 ]]  && color9=226    # vcs fg
-}
-
-alien_load_green_theme(){
-  [[ -z $color0 ]]  && color0=022    # time bg
-  [[ -z $color1 ]]  && color1=226    # init bg
-  [[ -z $color1r ]] && color1r=196   # init bg error
-  [[ -z $color2 ]]  && color2=254    # time fg
-  [[ -z $color3 ]]  && color3=034    # user bg
-  [[ -z $color4 ]]  && color4=232    # user fg
-  [[ -z $color5 ]]  && color5=082    # dir bg
-  [[ -z $color6 ]]  && color6=232    # dir fg
-  [[ -z $color7 ]]  && color7=238    # vcs bg
-  [[ -z $color8 ]]  && color8=228    # prompt fg
-  [[ -z $color9 ]]  && color9=154    # vcs fg
-}
+THEME_DIR="${0:A:h}/themes"
 
 alien_load_theme(){
   if [[ "${ALIEN_THEME}" == "red" ]]; then
+    source "${THEME_DIR}/red.zsh"
     alien_load_red_theme
   elif [[ "${ALIEN_THEME}" == "green" ]]; then
+    source "${THEME_DIR}/green.zsh"
     alien_load_green_theme
   elif [[ "${ALIEN_THEME}" == "blue" ]]; then
+    source "${THEME_DIR}/blue.zsh"
     alien_load_blue_theme
   else
+    source "${THEME_DIR}/red.zsh"
     alien_load_blue_theme
   fi
   [[ -z $color10 ]] && color10=244     # lr bg
