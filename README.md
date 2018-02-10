@@ -45,9 +45,9 @@ cd alien
 git submodule update --init --recursive
 ```
 
-## Asciicast v1.0.0
+## Asciicast v1.0.3
 
-[![asciicast](http://asciinema.org/a/154047.png)](https://asciinema.org/a/154047)
+[![asciicast](http://asciinema.org/a/162085.png)](https://asciinema.org/a/162085)
 
 ###### color scheme
 
