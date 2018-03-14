@@ -23,7 +23,7 @@ alien_ssh_client(){
 alien_battery_stat(){
   __os=`uname`;
   if [[ $__os = "Linux" ]]; then
-    if which upower > /dev/null ; then
+    if which upower > /dev/null 2>&1 ; then
       __bat_power=`upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print $2}'`;
       __bat_power_ind="";
       if [[ $__bat_power = "charging" ]]; then __bat_power_ind="+";
