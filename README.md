@@ -45,6 +45,12 @@ cd alien
 git submodule update --init --recursive
 ```
 
+Add the following line to your `~/.zshrc`
+
+```bash
+source ~/alien/alien.zsh
+```
+
 ## Asciicast v1.0.3
 
 [![asciicast](http://asciinema.org/a/162085.png)](https://asciinema.org/a/162085)
