@@ -174,4 +174,4 @@ _Note: this overrides `USE_NERD_FONT` configuration._
 
 ## License
 
-The project is available as open source under the terms of the [GPL-3.0 License](https://opensource.org/licenses/GPL-3.0).
+The project is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
