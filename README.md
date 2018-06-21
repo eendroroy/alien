@@ -61,24 +61,29 @@ source ~/alien/alien.zsh
 
 you can chose from 3 different color schemes (blue is the default)
 
-in ~/.zshrc just add any from the following three lines before your 'antigen theme ...' line
+in ~/.zshrc just add any from the following three lines before your `antigen theme ...` line
 
-    export ALIEN_THEME="blue"
+```bash
+export ALIEN_THEME="blue"
+```
 
 ![blue](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/blue.png)
 
-
-    export ALIEN_THEME="green"
+```bash
+export ALIEN_THEME="green"
+```
 
 ![green](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/green.png)
 
-
-    export ALIEN_THEME="red"
+```bash
+export ALIEN_THEME="red"
+```
 
 ![red](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/red.png)
 
-
-    export ALIEN_THEME="soft"
+```bash
+export ALIEN_THEME="soft"
+```
 
 ![soft](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/soft.png)
 
@@ -107,32 +112,32 @@ Or creating a new theme file:
 
 __/path/to/custom/theme.zsh__
 
-```
+```bash
 #!/usr/bin/env zsh
 
 alien_theme(){
-  [[ -z $color0 ]]  && color0=018    # time bg
-  [[ -z $color1 ]]  && color1=226    # init bg
-  [[ -z $color1r ]] && color1r=196   # init bg error
-  [[ -z $color2 ]]  && color2=254    # time fg
-  [[ -z $color3 ]]  && color3=026    # user bg
-  [[ -z $color4 ]]  && color4=254    # user fg
-  [[ -z $color5 ]]  && color5=045    # dir bg
-  [[ -z $color6 ]]  && color6=019    # dir fg
-  [[ -z $color7 ]]  && color7=238    # vcs bg
-  [[ -z $color8 ]]  && color8=228    # prompt fg
-  [[ -z $color9 ]]  && color9=051    # vcs fg
-  [[ -z $color10 ]] && color10=244   # lr bg
-  [[ -z $color11 ]] && color11=255   # lr fg
-  [[ -z $color12 ]] && color12=253   # dirty copy bg
-  [[ -z $color13 ]] && color13=016   # dirty copy fg
-  [[ -z $color14 ]] && color14=245   # venv color
+  color0=018    # time bg
+  color1=226    # init bg
+  color1r=196   # init bg error
+  color2=254    # time fg
+  color3=026    # user bg
+  color4=254    # user fg
+  color5=045    # dir bg
+  color6=019    # dir fg
+  color7=238    # vcs bg
+  color8=228    # prompt fg
+  color9=051    # vcs fg
+  color10=244   # lr bg
+  color11=255   # lr fg
+  color12=253   # dirty copy bg
+  color13=016   # dirty copy fg
+  color14=245   # venv color
 }
 ```
 
 Then activate the theme using:
 
-```
+```bash
 export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
 ```
 
@@ -140,7 +145,9 @@ export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
 
 Enable Nerd Font
 
-    export USE_NERD_FONT=1
+```bash
+export USE_NERD_FONT=1
+```
 
 _*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
 
@@ -148,25 +155,28 @@ _*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
 
 #### customize symbols
 
-    export ALIEN_GIT_SYM=G
-    export ALIEN_HG_SYM=H
-    export ALIEN_SVN_SYM=S
-    export ALIEN_BRANCH_SYM=
-    # Symbols from promptlib
-    export PLIB_GIT_ADD_SYM=+
-    export PLIB_GIT_DEL_SYM=-
-    export PLIB_GIT_MOD_SYM=⭑
-    export PLIB_GIT_NEW_SYM=?
-    export PLIB_GIT_PUSH_SYM=↑
-    export PLIB_GIT_PULL_SYM=↓
+```bash
+export ALIEN_GIT_SYM=G
+export ALIEN_HG_SYM=H
+export ALIEN_SVN_SYM=S
+export ALIEN_BRANCH_SYM=
+# Symbols from promptlib
+export PLIB_GIT_ADD_SYM=+
+export PLIB_GIT_DEL_SYM=-
+export PLIB_GIT_MOD_SYM=⭑
+export PLIB_GIT_NEW_SYM=?
+export PLIB_GIT_PUSH_SYM=↑
+export PLIB_GIT_PULL_SYM=↓
+```
 
 _Note: this overrides `USE_NERD_FONT` configuration._
 
 #### customize colors
 
-    export PLIB_GIT_TRACKED_COLOR=green
-    export PLIB_GIT_UNTRACKED_COLOR=red
-
+```bash
+export PLIB_GIT_TRACKED_COLOR=green
+export PLIB_GIT_UNTRACKED_COLOR=red
+```
 
 ## Libraries Used
 
