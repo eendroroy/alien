@@ -141,6 +141,12 @@ Then activate the theme using:
 export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
 ```
 
+###### date format
+
+```bash
+export ALIEN_DATE_TIME_FORMAT=%H:%M:%S # default is %r
+```
+
 ###### nerd font
 
 Enable Nerd Font
