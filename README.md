@@ -87,6 +87,13 @@ export ALIEN_THEME="soft"
 
 ![soft](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/soft.png)
 
+```bash
+export ALIEN_THEME="gruvbox"
+```
+
+![gruvbox](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/gruvbox.png)
+
+
 **Custom Color**
 
 ```bash
