@@ -20,3 +20,10 @@ alien_git_lr(){
 alien_git_dirty(){
   echo -n "`plib_git_dirty`";
 }
+
+alien_git_stash(){
+  __stash=$(plib_git_stash)
+  if [[ ${__stash} != "0" ]]; then
+    echo -ne " ${ALIEN_GIT_STASH_SYM}{${__stash}}"
+  fi
+}
