@@ -169,6 +169,7 @@ _*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
 #### customize symbols
 
 ```bash
+export ALIEN_GIT_STASH_SYM=@
 export ALIEN_GIT_SYM=G
 export ALIEN_HG_SYM=H
 export ALIEN_SVN_SYM=S
