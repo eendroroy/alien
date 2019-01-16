@@ -2,7 +2,7 @@
 
 [[ -z "${ALIEN_GIT_STASH_SYM}" ]] && ALIEN_GIT_STASH_SYM='@'
 
-if [[ $USE_NERD_FONT = 1 ]]; then
+if [[ ${USE_NERD_FONT} = 1 ]]; then
   [[ -z "${ALIEN_GIT_SYM}" ]]     && ALIEN_GIT_SYM=
   [[ -z "${PLIB_GIT_ADD_SYM}" ]]  && PLIB_GIT_ADD_SYM=
   [[ -z "${PLIB_GIT_DEL_SYM}" ]]  && PLIB_GIT_DEL_SYM=

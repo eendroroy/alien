@@ -5,4 +5,5 @@ alien_venv(){
   if [[ ${__venv} != "" ]]; then
     echo -ne "`plib_venv` "
   fi
+  unset __venv
 }
