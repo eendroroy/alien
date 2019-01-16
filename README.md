@@ -10,9 +10,16 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/eendroroy/alien.svg)](https://github.com/eendroroy/alien/pulls)
 [![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/eendroroy/alien.svg)](https://github.com/eendroroy/alien/pulls?q=is%3Apr+is%3Aclosed)
 
-**alien** theme is faster than a lot other themes. **Why?** It updates part of the prompt asyncronously - the time consuming processings like git status checking, git dirty copy checking etc. **How?** It starts a background job for these process, and in the mean time draws initial prompt and lets you use the terminal as you would normally.
+**alien** theme is faster than a lot other themes.
 
-alien theme is **independent** of any library like Oh-My-Zsh or Prezto. Whatever it needs already included inside. The only exception is font. You need to **install the powerline patched fonts** to properly display the prompt.
+**Why?** It updates part of the prompt asyncronously - the time consuming processings like git status checking,
+git dirty copy checking etc.
+
+**How?** It starts a background job for these process, and in the mean time draws initial prompt and lets you use the
+terminal as you would normally.
+
+alien theme is **independent** of any library like Oh-My-Zsh or Prezto. Whatever it needs already included inside.
+The only exception is font. You need to **install the powerline patched fonts** to properly display the prompt.
 
 ## Requirements
 
@@ -21,7 +28,7 @@ alien theme is **independent** of any library like Oh-My-Zsh or Prezto. Whatever
 
 ## Installation
 
-Add the following line to your .zshrc depending on your zsh plugin manager
+Add the following line to your `.zshrc` depending on your zsh plugin manager
 
 ##### [antigen](https://github.com/zsh-users/antigen):
 
