@@ -154,6 +154,14 @@ export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
 export ALIEN_DATE_TIME_FORMAT=%H:%M:%S # default is %r
 ```
 
+###### Keep previous PROMPT:
+
+```bash
+export ALIEN_KEEP_PROMPT=1
+```
+
+This will keep previous prompt while new prompt is being rendered.
+
 ###### nerd font
 
 Enable Nerd Font
