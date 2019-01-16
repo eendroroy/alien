@@ -26,4 +26,5 @@ alien_git_stash(){
   if [[ ${__stash} != "0" ]]; then
     echo -ne " ${ALIEN_GIT_STASH_SYM}{${__stash}}"
   fi
+  unset __stash
 }
