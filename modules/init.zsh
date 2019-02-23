@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+[[ -z "${ALIEN_SECTION_SEP_SYM}" ]] && ALIEN_SECTION_SEP_SYM=
+[[ -z "${ALIEN_PROMPT_SYM}" ]] && ALIEN_PROMPT_SYM=❱
 [[ -z "${ALIEN_GIT_STASH_SYM}" ]] && ALIEN_GIT_STASH_SYM='@'
 
 if [[ ${USE_NERD_FONT} = 1 ]]; then

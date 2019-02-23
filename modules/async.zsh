@@ -3,23 +3,18 @@
 function alien_dummy(){}
 
 function alien_lprompt_complete() {
+  alien_prompt_start
   if [[ $(alien_is_git) == 1 ]]; then
-    PROMPT="
-%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(alien_date_time_info)$(alien_battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %1~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`alien_git_branch`%f%k%K{$color10}%F{$color7}%f%k%K{$color10}%F{$color11}$(alien_git_stash)$(alien_git_lr) %f%k%K{$color12}%F{$color10}%f%k%K{$color12}%F{$color13}$(alien_git_dirty) %f%k%F{$color12}%f
-%F{$color3}$(alien_ssh_client)%f%F{$color14}`alien_venv`%f%F{$color8}%B❱%b%f "
+    alien_prompt_append_section "$(alien_git_branch)" $color9 $color7 $ALIEN_SECTION_SEP_SYM
+    alien_prompt_append_section "$(alien_git_stash)$(alien_git_lr) " $color10 $color12 $ALIEN_SECTION_SEP_SYM
+    alien_prompt_append_section "$(alien_git_dirty) " $color13 $color12 $ALIEN_SECTION_SEP_SYM
   elif [[ $(alien_is_hg) == 1 ]]; then
-    PROMPT="
-%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(alien_date_time_info)$(alien_battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %1~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`alien_hg_branch`%f%k%K{$color10}%F{$color7}%f%k%K{$color10}%F{$color11} %f%k%K{$color12}%F{$color10}%f%k%K{$color12}%F{$color13} %f%k%F{$color12}%f
-%F{$color3}$(alien_ssh_client)%f%F{$color14}`alien_venv`%f%F{$color8}%B❱%b%f "
+    alien_prompt_append_section "$(alien_hg_branch)" $color7 $color10 $ALIEN_SECTION_SEP_SYM
   elif [[ $(alien_is_svn) == 1 ]]; then
-    PROMPT="
-%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(alien_date_time_info)$(alien_battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %1~ %f%k%F{$color5}%K{$color7}%k%f%K{$color7}%F{$color9}`alien_svn_branch`%f%k%K{$color10}%F{$color7}%f%k%K{$color10}%F{$color11} %f%k%K{$color12}%F{$color10}%f%k%K{$color12}%F{$color13} %f%k%F{$color12}%f
-%F{$color3}$(alien_ssh_client)%f%F{$color14}`alien_venv`%f%F{$color8}%B❱%b%f "
-  else
-    PROMPT="
-%(?.%K{$color0}%F{$color1}%f%k.%K{$color0}%F{$color1r}%f%k)%K{$color0}%F{$color2} $(alien_date_time_info)$(alien_battery_stat) %f%k%K{$color3}%F{$color0}%f%k%K{$color3}%F{$color4} $_user %f%k%K{$color5}%F{$color3}%f%k%K{$color5}%F{$color6} %1~ %f%k%F{$color5}%f
-%F{$color3}$(alien_ssh_client)%f%F{$color14}`alien_venv`%f%F{$color8}%B❱%b%f "
+    alien_prompt_append_section "$(alien_svn_branch)" $color7 $color10 $ALIEN_SECTION_SEP_SYM
   fi
+  alien_prompt_end
+  PROMPT=$(alien_prompt_render)
   zle && zle reset-prompt
   async_stop_worker lprompt -n
 }
