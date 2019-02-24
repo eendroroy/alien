@@ -1,23 +1,35 @@
 #!/usr/bin/env zsh
 
 alien_theme(){
-  [[ -z $color0 ]]  && color0=088    # time bg
-  [[ -z $color1 ]]  && color1=226    # init bg
-  [[ -z $color1r ]] && color1r=196   # init bg error
-  [[ -z $color2 ]]  && color2=254    # time fg
-  [[ -z $color3 ]]  && color3=202    # user bg
-  [[ -z $color4 ]]  && color4=232    # user fg
-  [[ -z $color5 ]]  && color5=214    # dir bg
-  [[ -z $color6 ]]  && color6=232    # dir fg
-  [[ -z $color7 ]]  && color7=238    # vcs bg
-  [[ -z $color8 ]]  && color8=228    # prompt fg
-  [[ -z $color9 ]]  && color9=226    # vcs fg
-  [[ -z $color10 ]] && color10=244   # lr bg
-  [[ -z $color11 ]] && color11=255   # lr fg
-  [[ -z $color12 ]] && color12=253   # dirty copy bg
-  [[ -z $color13 ]] && color13=016   # dirty copy fg
-  [[ -z $color14 ]] && color14=245   # venv color
-  
-  [[ -z "${PLIB_GIT_TRACKED_COLOR}" ]]   && PLIB_GIT_TRACKED_COLOR=124
-  [[ -z "${PLIB_GIT_UNTRACKED_COLOR}" ]] && PLIB_GIT_UNTRACKED_COLOR=236
+  [[ -z $ALIEN_PROMPT_FG ]] && ALIEN_PROMPT_FG=228
+
+  [[ -z $ALIEN_SECTION_EXIT_FG ]] && ALIEN_SECTION_EXIT_FG=232
+  [[ -z $ALIEN_SECTION_EXIT_BG ]] && ALIEN_SECTION_EXIT_BG=226
+  [[ -z $ALIEN_SECTION_EXIT_BG_ERROR ]] && ALIEN_SECTION_EXIT_BG_ERROR=196
+
+  [[ -z $ALIEN_SECTION_TIME_FG ]] && ALIEN_SECTION_TIME_FG=254
+  [[ -z $ALIEN_SECTION_TIME_BG ]] && ALIEN_SECTION_TIME_BG=88
+
+  [[ -z $ALIEN_SECTION_BATTERY_FG ]] && ALIEN_SECTION_BATTERY_FG=254
+  [[ -z $ALIEN_SECTION_BATTERY_BG ]] && ALIEN_SECTION_BATTERY_BG=88
+
+  [[ -z $ALIEN_SECTION_USER_FG ]] && ALIEN_SECTION_USER_FG=232
+  [[ -z $ALIEN_SECTION_USER_BG ]] && ALIEN_SECTION_USER_BG=202
+
+  [[ -z $ALIEN_SECTION_PATH_FG ]] && ALIEN_SECTION_PATH_FG=232
+  [[ -z $ALIEN_SECTION_PATH_BG ]] && ALIEN_SECTION_PATH_BG=214
+
+  [[ -z $ALIEN_SECTION_VCS_BRANCH_FG ]] && ALIEN_SECTION_VCS_BRANCH_FG=226
+  [[ -z $ALIEN_SECTION_VCS_BRANCH_BG ]] && ALIEN_SECTION_VCS_BRANCH_BG=238
+  [[ -z $ALIEN_SECTION_VCS_STATUS_FG ]] && ALIEN_SECTION_VCS_STATUS_FG=255
+  [[ -z $ALIEN_SECTION_VCS_STATUS_BG ]] && ALIEN_SECTION_VCS_STATUS_BG=244
+  [[ -z $ALIEN_SECTION_VCS_DIRTY_FG ]] && ALIEN_SECTION_VCS_DIRTY_FG=16
+  [[ -z $ALIEN_SECTION_VCS_DIRTY_BG ]] && ALIEN_SECTION_VCS_DIRTY_BG=253
+
+  [[ -z $ALIEN_SECTION_SSH_FG ]] && ALIEN_SECTION_SSH_FG=245
+
+  [[ -z $ALIEN_SECTION_VENV_FG ]] && ALIEN_SECTION_VENV_FG=245
+
+  [[ -z $PLIB_GIT_TRACKED_COLOR ]] && PLIB_GIT_TRACKED_COLOR=124
+  [[ -z $PLIB_GIT_UNTRACKED_COLOR ]] && PLIB_GIT_UNTRACKED_COLOR=236
 }
