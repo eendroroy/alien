@@ -40,6 +40,7 @@ alien_prompt_render() {
     __last_sep="$__sep"
     alien_colorized "$__content" "$__fg" "$__bg"
   done
+  alien_colorized "$__last_sep" "$__last_bg"
 }
 
 alien_prompt_start() {
