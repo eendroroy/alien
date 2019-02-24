@@ -74,7 +74,7 @@ alien_prompt_start() {
     local __exit_code_info="%(?"
     __exit_code_info+=".$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG $__bg)"
     if [[ $ALIEN_SECTION_EXIT_CODE != 0 ]]; then
-      __exit_code_info+=".$(alien_colorized "%?" $ALIEN_SECTION_EXIT_FG $ALIEN_SECTION_EXIT_BG_ERROR)"
+      __exit_code_info+=".$(alien_colorized " %? " $ALIEN_SECTION_EXIT_FG $ALIEN_SECTION_EXIT_BG_ERROR)"
       __exit_code_info+="$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG_ERROR $__bg)"
     else
       __exit_code_info+=".$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG_ERROR $__bg)"
