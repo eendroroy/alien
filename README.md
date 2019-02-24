@@ -104,22 +104,37 @@ export ALIEN_THEME="gruvbox"
 **Custom Color**
 
 ```bash
-color0=018      # time background color
-color1=226      # normal background color
-color1r=196     # normal error background color
-color2=254      # time foreground color
-color3=026      # user background color
-color4=254      # user foreground color
-color5=045      # dir background color
-color6=019      # dir foreground color
-color7=238      # vcs background color
-color8=228      # prompt foreground color
-color9=051      # vcs foreground color
-color10=244     # git left-right background color
-color11=255     # git left-right foreground color
-color12=253     # dirty copy background color
-color13=016     # dirty copy foreground color
-color14=245     # venv color
+ALIEN_PROMPT_FG=87
+
+ALIEN_SECTION_EXIT_FG=0
+ALIEN_SECTION_EXIT_BG=87
+ALIEN_SECTION_EXIT_BG_ERROR=202
+
+ALIEN_SECTION_TIME_FG=0
+ALIEN_SECTION_TIME_BG=193
+
+ALIEN_SECTION_BATTERY_FG=0
+ALIEN_SECTION_BATTERY_BG=193
+
+ALIEN_SECTION_USER_FG=0
+ALIEN_SECTION_USER_BG=87
+
+ALIEN_SECTION_PATH_FG=0
+ALIEN_SECTION_PATH_BG=45
+
+ALIEN_SECTION_VCS_BRANCH_FG=87
+ALIEN_SECTION_VCS_BRANCH_BG=238
+ALIEN_SECTION_VCS_STATUS_FG=87
+ALIEN_SECTION_VCS_STATUS_BG=238
+ALIEN_SECTION_VCS_DIRTY_FG=87
+ALIEN_SECTION_VCS_DIRTY_BG=238
+
+ALIEN_SECTION_SSH_FG=238
+
+ALIEN_SECTION_VENV_FG=238
+
+PLIB_GIT_TRACKED_COLOR=193
+PLIB_GIT_UNTRACKED_COLOR=87
 ```
 
 Or creating a new theme file:
@@ -130,22 +145,37 @@ __/path/to/custom/theme.zsh__
 #!/usr/bin/env zsh
 
 alien_theme(){
-  color0=018    # time bg
-  color1=226    # init bg
-  color1r=196   # init bg error
-  color2=254    # time fg
-  color3=026    # user bg
-  color4=254    # user fg
-  color5=045    # dir bg
-  color6=019    # dir fg
-  color7=238    # vcs bg
-  color8=228    # prompt fg
-  color9=051    # vcs fg
-  color10=244   # lr bg
-  color11=255   # lr fg
-  color12=253   # dirty copy bg
-  color13=016   # dirty copy fg
-  color14=245   # venv color
+  ALIEN_PROMPT_FG=87
+
+  ALIEN_SECTION_EXIT_FG=0
+  ALIEN_SECTION_EXIT_BG=87
+  ALIEN_SECTION_EXIT_BG_ERROR=202
+
+  ALIEN_SECTION_TIME_FG=0
+  ALIEN_SECTION_TIME_BG=193
+
+  ALIEN_SECTION_BATTERY_FG=0
+  ALIEN_SECTION_BATTERY_BG=193
+
+  ALIEN_SECTION_USER_FG=0
+  ALIEN_SECTION_USER_BG=87
+
+  ALIEN_SECTION_PATH_FG=0
+  ALIEN_SECTION_PATH_BG=45
+
+  ALIEN_SECTION_VCS_BRANCH_FG=87
+  ALIEN_SECTION_VCS_BRANCH_BG=238
+  ALIEN_SECTION_VCS_STATUS_FG=87
+  ALIEN_SECTION_VCS_STATUS_BG=238
+  ALIEN_SECTION_VCS_DIRTY_FG=87
+  ALIEN_SECTION_VCS_DIRTY_BG=238
+
+  ALIEN_SECTION_SSH_FG=238
+
+  ALIEN_SECTION_VENV_FG=238
+
+  PLIB_GIT_TRACKED_COLOR=193
+  PLIB_GIT_UNTRACKED_COLOR=87
 }
 ```
 
@@ -153,58 +183,6 @@ Then activate the theme using:
 
 ```bash
 export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
-```
-
-##### exit-code section
-
-To disable the numeric exit-code:
-
-```bash
-export ALIEN_SHOW_EXIT_CODE=0
-```
-
-##### date/time section
-
-To disable the date/time section:
-
-```bash
-export ALIEN_SHOW_DATE_TIME=0
-```
-
-To change the format of the date/time section:
-
-```bash
-export ALIEN_DATE_TIME_FORMAT=%H:%M:%S # default is %r
-```
-
-##### battery section
-
-To disable the battery section:
-
-```bash
-export ALIEN_SHOW_BATTERY=0
-```
-
-##### user/host section
-
-To disable the user/host section:
-
-```bash
-export ALIEN_SHOW_USER_HOST=0
-```
-
-To not include the hostname:
-
-```bash
-export ALIEN_SHOW_HOST=0
-```
-
-##### path section
-
-To disable showing the full path:
-
-```bash
-export ALIEN_LONG_PATH=0
 ```
 
 ###### prompt symbol
@@ -215,12 +193,137 @@ To change the symbol of the input-prompt:
 export ALIEN_PROMPT_SYM=
 ```
 
+To change colors:
+
+```bash
+export ALIEN_PROMPT_FG=100
+```
+
 ###### section seperator
 
 To change the section-separator:
 
 ```bash
 export ALIEN_SECTION_SEP_SYM=
+```
+
+###### exit section
+
+To disable section:
+
+```bash
+export ALIEN_SECTION_EXIT_ENABLE=0
+```
+
+To disable the numeric exit-code:
+
+```bash
+export ALIEN_SECTION_EXIT_CODE=0
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_EXIT_FG=100
+export ALIEN_SECTION_EXIT_BG=150
+export ALIEN_SECTION_EXIT_BG_ERROR=200
+```
+
+###### time section
+
+To disable section:
+
+```bash
+export ALIEN_SECTION_TIME_ENABLE=0
+```
+
+To change the format::
+
+```bash
+export ALIEN_SECTION_TIME_FORMAT=%H:%M:%S # default is %r
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_TIME_FG=100
+export ALIEN_SECTION_TIME_BG=150
+```
+
+###### battery section
+
+To disable section:
+
+```bash
+export ALIEN_SECTION_BATTERY_ENABLE=0
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_BATTERY_FG=100
+export ALIEN_SECTION_BATTERY_BG=150
+```
+
+###### user section
+
+To disable section:
+
+```bash
+export ALIEN_SECTION_USER_ENABLE=0
+```
+
+To hide the hostname:
+
+```bash
+export ALIEN_SECTION_USER_HOST=0
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_USER_FG=100
+export ALIEN_SECTION_USER_BG=150
+```
+
+###### path section
+
+To disable section:
+
+```bash
+export ALIEN_SECTION_PATH_ENABLE=0
+```
+
+To display short instead of full path:
+
+```bash
+export ALIEN_SECTION_PATH_FULL=0
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_PATH_FG=100
+export ALIEN_SECTION_PATH_BG=150
+```
+
+###### vcs section
+
+To disable section:
+
+```bash
+export ALIEN_SECTION_VCS_ENABLE=0
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_VCS_BRANCH_FG=100
+export ALIEN_SECTION_VCS_BRANCH_BG=150
+export ALIEN_SECTION_VCS_STATUS_FG=100
+export ALIEN_SECTION_VCS_STATUS_BG=150
+export ALIEN_SECTION_VCS_DIRTY_FG=100
+export ALIEN_SECTION_VCS_DIRTY_BG=150
 ```
 
 ###### Keep previous PROMPT:

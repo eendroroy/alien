@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
-alien_user_host_info(){
+alien_user_info(){
   if [[ "${DEFAULT_USER}" == "${USER}" ]]; then
     __user=''
   else
     [[ -n "$SUDO_USER" && "$SUDO_USER" != "${_user}" ]] && __user="$USER($SUDO_USER)" || __user="$USER"
   fi
-  if [[ ${ALIEN_SHOW_HOST} != 0 ]]; then
+  if [[ ${ALIEN_SECTION_USER_HOST} != 0 ]]; then
     __user+="@%M"
   fi
   echo -n "${__user}"
@@ -23,8 +23,8 @@ alien_storage_info(){
   unset __df __fs __size __used __usedp __free
 }
 
-alien_date_time_info(){
-  [[ -z ${ALIEN_DATE_TIME_FORMAT} ]] && echo -n $(date +%r) || echo -n $(date +${ALIEN_DATE_TIME_FORMAT})
+alien_time_info(){
+  [[ -z ${ALIEN_SECTION_TIME_FORMAT} ]] && echo -n $(date +%r) || echo -n $(date +${ALIEN_SECTION_TIME_FORMAT})
 }
 
 alien_ssh_client(){
