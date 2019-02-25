@@ -155,10 +155,72 @@ Then activate the theme using:
 export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
 ```
 
-###### date format
+##### exit-code section
+
+To disable the numeric exit-code:
+
+```bash
+export ALIEN_SHOW_EXIT_CODE=0
+```
+
+##### date/time section
+
+To disable the date/time section:
+
+```bash
+export ALIEN_SHOW_DATE_TIME=0
+```
+
+To change the format of the date/time section:
 
 ```bash
 export ALIEN_DATE_TIME_FORMAT=%H:%M:%S # default is %r
+```
+
+##### battery section
+
+To disable the battery section:
+
+```bash
+export ALIEN_SHOW_BATTERY=0
+```
+
+##### user/host section
+
+To disable the user/host section:
+
+```bash
+export ALIEN_SHOW_USER_HOST=0
+```
+
+To not include the hostname:
+
+```bash
+export ALIEN_SHOW_HOST=0
+```
+
+##### path section
+
+To disable showing the full path:
+
+```bash
+export ALIEN_LONG_PATH=0
+```
+
+###### prompt symbol
+
+To change the symbol of the input-prompt:
+
+```bash
+export ALIEN_PROMPT_SYM=
+```
+
+###### section seperator
+
+To change the section-separator:
+
+```bash
+export ALIEN_SECTION_SEP_SYM=
 ```
 
 ###### Keep previous PROMPT:
