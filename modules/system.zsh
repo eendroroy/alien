@@ -1,5 +1,16 @@
 #!/usr/bin/env zsh
 
+alien_user_host_info(){
+  if [[ "${DEFAULT_USER}" == "${USER}" ]]; then
+    __user=''
+  else
+    [[ -n "$SUDO_USER" && "$SUDO_USER" != "${_user}" ]] && __user="$USER($SUDO_USER)" || __user="$USER"
+  fi
+  if [[ ${ALIEN_SHOW_HOST} != 0 ]]; then
+    __user+="@%M"
+  fi
+  echo -n "${__user}"
+}
 
 alien_storage_info(){
   __df=$(df -h . | tail -1)
