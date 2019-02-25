@@ -294,10 +294,10 @@ To disable section:
 export ALIEN_SECTION_PATH_ENABLE=0
 ```
 
-To display short instead of full path:
+To change the number of path-components to display:
 
 ```bash
-export ALIEN_SECTION_PATH_FULL=0
+export ALIEN_SECTION_PATH_COMPONENTS=2
 ```
 
 To change colors:

@@ -62,7 +62,11 @@ alien_prompt_start() {
   fi
   # path section
   if [[ $ALIEN_SECTION_PATH_ENABLE != 0 ]]; then
-    [[ $ALIEN_SECTION_PATH_FULL != 0 ]] && __path_info="%~" || __path_info="%1~"
+    if [[ -z $ALIEN_SECTION_PATH_COMPONENTS ]]; then
+      __path_info="%~"
+    else
+      __path_info="%${ALIEN_SECTION_PATH_COMPONENTS}~"
+    fi
     alien_prompt_append_section " ${__path_info} " \
       $ALIEN_SECTION_PATH_FG $ALIEN_SECTION_PATH_BG $ALIEN_SECTION_SEP_SYM
   fi
