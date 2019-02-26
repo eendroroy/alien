@@ -40,50 +40,61 @@ alien_prompt_render() {
     __last_sep="$__sep"
     alien_colorized "$__content" "$__fg" "$__bg"
   done
+  alien_colorized "$__last_sep" "$__last_bg"
 }
 
 alien_prompt_start() {
   ALIEN_PROMPT_SECTIONS=()
-  # date/time section
-  if [[ $ALIEN_SHOW_DATE_TIME != 0 ]]; then
-    alien_prompt_append_section " $(alien_date_time_info) " $color2 $color0 $ALIEN_SECTION_SEP_SYM
+  # time section
+  if [[ $ALIEN_SECTION_TIME_ENABLE != 0 ]]; then
+    alien_prompt_append_section " $(alien_time_info) " \
+      $ALIEN_SECTION_TIME_FG $ALIEN_SECTION_TIME_BG $ALIEN_SECTION_SEP_SYM
   fi
   # battery section
-  if [[ $ALIEN_SHOW_BATTERY != 0 ]]; then
-    alien_prompt_append_section " $(alien_battery_stat) " $color2 $color0 $ALIEN_SECTION_SEP_SYM
+  if [[ $ALIEN_SECTION_BATTERY_ENABLE != 0 ]]; then
+    alien_prompt_append_section " $(alien_battery_stat) " \
+      $ALIEN_SECTION_BATTERY_FG $ALIEN_SECTION_BATTERY_BG $ALIEN_SECTION_SEP_SYM
   fi
-  # user/host section
-  if [[ $ALIEN_SHOW_USER_HOST != 0 ]]; then
-    alien_prompt_append_section " $(alien_user_host_info) " $color4 $color3 $ALIEN_SECTION_SEP_SYM
+  # user section
+  if [[ $ALIEN_SECTION_USER_ENABLE != 0 ]]; then
+    alien_prompt_append_section " $(alien_user_info) " \
+      $ALIEN_SECTION_USER_FG $ALIEN_SECTION_USER_BG $ALIEN_SECTION_SEP_SYM
   fi
   # path section
-  if [[ $ALIEN_LONG_PATH != 0 ]]; then
-    alien_prompt_append_section " %~ " $color6 $color5 $ALIEN_SECTION_SEP_SYM
-  else
-    alien_prompt_append_section " %1~ " $color6 $color5 $ALIEN_SECTION_SEP_SYM
+  if [[ $ALIEN_SECTION_PATH_ENABLE != 0 ]]; then
+    if [[ -z $ALIEN_SECTION_PATH_COMPONENTS ]]; then
+      __path_info="%~"
+    else
+      __path_info="%${ALIEN_SECTION_PATH_COMPONENTS}~"
+    fi
+    alien_prompt_append_section " ${__path_info} " \
+      $ALIEN_SECTION_PATH_FG $ALIEN_SECTION_PATH_BG $ALIEN_SECTION_SEP_SYM
   fi
-  # determine background-color of first section
-  IFS=',' read -d"\0" __content __fg __bg __sep <<< "${ALIEN_PROMPT_SECTIONS[1]}\0"
-  # prepend exit-code section
-  local __exit_code_info="%(?"
-  __exit_code_info+=".$(alien_colorized $ALIEN_SECTION_SEP_SYM $color1 $__bg)"
-  if [[ $ALIEN_SHOW_EXIT_CODE != 0 ]]; then
-    __exit_code_info+=".$(alien_colorized "%?" $color2 $color1r)"
-    __exit_code_info+="$(alien_colorized "$ALIEN_SECTION_SEP_SYM" $color1r $__bg)"
-  else
-    __exit_code_info+=".$(alien_colorized "$ALIEN_SECTION_SEP_SYM" $color1r $__bg)"
+  # exit section
+  if [[ $ALIEN_SECTION_EXIT_ENABLE != 0 ]]; then
+    # determine background-color of first section
+    IFS=',' read -d"\0" __content __fg __bg __sep <<< "${ALIEN_PROMPT_SECTIONS[1]}\0"
+    # prepend exit-code section
+    local __exit_code_info="%(?"
+    __exit_code_info+=".$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG $__bg)"
+    if [[ $ALIEN_SECTION_EXIT_CODE != 0 ]]; then
+      __exit_code_info+=".$(alien_colorized " %? " $ALIEN_SECTION_EXIT_FG $ALIEN_SECTION_EXIT_BG_ERROR)"
+      __exit_code_info+="$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG_ERROR $__bg)"
+    else
+      __exit_code_info+=".$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG_ERROR $__bg)"
+    fi
+    __exit_code_info+=")"
+    alien_prompt_prepend_section $__exit_code_info
   fi
-  __exit_code_info+=")"
-  alien_prompt_prepend_section $__exit_code_info
 }
 
 alien_prompt_end() {
   # newline
   alien_prompt_append_section $'\n'
   # ssh-client section
-  alien_prompt_append_section "$(alien_ssh_client)" $color3
+  alien_prompt_append_section "$(alien_ssh_client)" $ALIEN_SECTION_SSH_FG
   # venv section
-  alien_prompt_append_section "$(alien_venv)" $color14
+  alien_prompt_append_section "$(alien_venv)" $ALIEN_SECTION_VENV_FG
   # prompt
-  alien_prompt_append_section "%B${ALIEN_PROMPT_SYM}%b " $color8
+  alien_prompt_append_section "%B${ALIEN_PROMPT_SYM}%b " $ALIEN_PROMPT_FG
 }
