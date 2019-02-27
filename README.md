@@ -69,9 +69,8 @@ source ~/alien/alien.zsh
 To define the order of sections to display:
 
 ```bash
-export ALIEN_SECTIONS=(
+export ALIEN_SECTIONS_LEFT=(
   exit
-  time
   battery
   user
   path
@@ -80,14 +79,17 @@ export ALIEN_SECTIONS=(
   venv
   prompt
 )
+
+export ALIEN_SECTIONS_RIGHT=(
+  time
+)
 ```
 
 To define if sections are to be loaded asyncronously add `:async` to the section-name:
 
 ```bash
-export ALIEN_SECTIONS=(
+export ALIEN_SECTIONS_LEFT=(
   exit
-  time
   battery
   user
   path
@@ -106,7 +108,8 @@ export ALIEN_SECTIONS=(
 To change the section-separator:
 
 ```bash
-export ALIEN_SECTION_SEP_SYM=
+export ALIEN_SECTIONS_LEFT_SEP_SYM=
+export ALIEN_SECTIONS_RIGHT_SEP_SYM=
 ```
 
 

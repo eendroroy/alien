@@ -23,9 +23,9 @@ function precmd(){
   setopt prompt_subst
   alien_load_theme
 
-  RPROMPT=''
   if [[ ${PROMPT} == "" ]] || [[ ${ALIEN_KEEP_PROMPT} != 1 ]]; then
-    PROMPT=$(alien_prompt_render)
+    PROMPT="$(alien_prompt_render_left)"
+    RPROMPT="$(alien_prompt_render_right)"
   fi
   alien_async_prompt
 }
