@@ -5,7 +5,7 @@ alien_prompt_section_exit() {
     content "%(?.. %? )"
     foreground $ALIEN_SECTION_EXIT_FG
     background "%(?.$ALIEN_SECTION_EXIT_BG.$ALIEN_SECTION_EXIT_BG_ERROR)"
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 
@@ -14,7 +14,7 @@ alien_prompt_section_time() {
     content " $(alien_time_info) "
     foreground $ALIEN_SECTION_TIME_FG
     background $ALIEN_SECTION_TIME_BG
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 
@@ -23,7 +23,7 @@ alien_prompt_section_battery() {
     content " $(alien_battery_stat) "
     foreground $ALIEN_SECTION_BATTERY_FG
     background $ALIEN_SECTION_BATTERY_BG
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 
@@ -32,7 +32,7 @@ alien_prompt_section_user() {
     content " $(alien_user_info) "
     foreground $ALIEN_SECTION_USER_FG
     background $ALIEN_SECTION_USER_BG
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 
@@ -47,7 +47,7 @@ alien_prompt_section_path() {
     content " ${__path_info} "
     foreground $ALIEN_SECTION_PATH_FG
     background $ALIEN_SECTION_PATH_BG
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 
@@ -66,7 +66,7 @@ alien_prompt_section_vcs_branch() {
     content " ${__branch_info} "
     foreground $ALIEN_SECTION_VCS_BRANCH_FG
     background $ALIEN_SECTION_VCS_BRANCH_BG
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 
@@ -83,7 +83,7 @@ alien_prompt_section_vcs_status() {
     content "${__stash_info}${__lr_info}"
     foreground $ALIEN_SECTION_VCS_STATUS_FG
     background $ALIEN_SECTION_VCS_STATUS_BG
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 
@@ -98,7 +98,7 @@ alien_prompt_section_vcs_dirty() {
     content "${__dirty_info}"
     foreground $ALIEN_SECTION_VCS_DIRTY_FG
     background $ALIEN_SECTION_VCS_DIRTY_BG
-    separator $ALIEN_SECTION_SEP_SYM
+    separator 1
   )
 }
 

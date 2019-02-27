@@ -3,7 +3,8 @@
 function alien_dummy(){}
 
 function alien_lprompt_complete() {
-  PROMPT=$(alien_prompt_render 'async')
+  PROMPT=$(alien_prompt_render_left 'async')
+  RPROMPT=$(alien_prompt_render_right 'async')
   zle && zle reset-prompt
   async_stop_worker lprompt -n
 }
