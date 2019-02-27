@@ -1,5 +1,20 @@
 #!/usr/bin/env zsh
 
+[[ -z $ALIEN_SECTIONS ]] && ALIEN_SECTIONS=(
+  exit
+  time
+  battery
+  user
+  path
+  vcs_branch:async
+  vcs_status:async
+  vcs_dirty:async
+  newline
+  ssh
+  venv
+  prompt
+)
+
 [[ -z "${ALIEN_SECTION_SEP_SYM}" ]] && ALIEN_SECTION_SEP_SYM=
 [[ -z "${ALIEN_PROMPT_SYM}" ]] && ALIEN_PROMPT_SYM=❱
 [[ -z "${ALIEN_GIT_STASH_SYM}" ]] && ALIEN_GIT_STASH_SYM='@'
