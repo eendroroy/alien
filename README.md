@@ -21,6 +21,10 @@ terminal as you would normally.
 alien theme is **independent** of any library like Oh-My-Zsh or Prezto. Whatever it needs already included inside.
 The only exception is font. You need to **install the powerline patched fonts** to properly display the prompt.
 
+## Asciicast v1.0.3
+
+[![asciicast](http://asciinema.org/a/162085.svg)](https://asciinema.org/a/162085?cols=80&rows=20)
+
 ## Requirements
 
 - zsh (obviously)
@@ -30,21 +34,21 @@ The only exception is font. You need to **install the powerline patched fonts** 
 
 Add the following line to your `.zshrc` depending on your zsh plugin manager
 
-##### [antigen](https://github.com/zsh-users/antigen):
+#### [antigen](https://github.com/zsh-users/antigen):
 
     antigen theme eendroroy/alien alien
 
-##### [zgen](https://github.com/tarjoilija/zgen):
+#### [zgen](https://github.com/tarjoilija/zgen):
 
     zgen load eendroroy/alien
 
-##### [zplug](https://github.com/zplug/zplug):
+#### [zplug](https://github.com/zplug/zplug):
 
     zplug "eendroroy/alien"
 
-##### [oh-my-zsh: Overriding and Adding Themes](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#overriding-and-adding-themes)
+#### [oh-my-zsh: Overriding and Adding Themes](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#overriding-and-adding-themes)
 
-##### Manually clonning
+#### Manually cloning
 
 ```bash
 git clone https://github.com/eendroroy/alien.git
@@ -58,11 +62,166 @@ Add the following line to your `~/.zshrc`
 source ~/alien/alien.zsh
 ```
 
-## Asciicast v1.0.3
+## Configuration
 
-[![asciicast](http://asciinema.org/a/162085.png)](https://asciinema.org/a/162085)
+### sections
 
-###### color scheme
+To define the order of sections to display:
+
+```bash
+export ALIEN_SECTIONS=(
+  exit
+  time
+  battery
+  user
+  path
+  newline
+  ssh
+  venv
+  prompt
+)
+```
+
+To define if sections are to be loaded asyncronously add `:async` to the section-name:
+
+```bash
+export ALIEN_SECTIONS=(
+  exit
+  time
+  battery
+  user
+  path
+  vcs_branch:async
+  vcs_status:async
+  vcs_dirty:async
+  newline
+  ssh
+  venv
+  prompt
+)
+```
+
+#### section seperator
+
+To change the section-separator:
+
+```bash
+export ALIEN_SECTION_SEP_SYM=
+```
+
+
+#### `prompt`-section
+
+To change the symbol of the input-prompt:
+
+```bash
+export ALIEN_PROMPT_SYM=
+```
+
+To change colors:
+
+```bash
+export ALIEN_PROMPT_FG=100
+```
+
+#### `exit`-section
+
+To disable the numeric exit-code:
+
+```bash
+export ALIEN_SECTION_EXIT_CODE=0
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_EXIT_FG=100
+export ALIEN_SECTION_EXIT_BG=150
+export ALIEN_SECTION_EXIT_BG_ERROR=200
+```
+
+#### `time`-section
+
+To change the format::
+
+```bash
+export ALIEN_SECTION_TIME_FORMAT=%H:%M:%S # default is %r
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_TIME_FG=100
+export ALIEN_SECTION_TIME_BG=150
+```
+
+#### `battery`-section
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_BATTERY_FG=100
+export ALIEN_SECTION_BATTERY_BG=150
+```
+
+#### `user`-section
+
+To show the hostname:
+
+```bash
+export ALIEN_SECTION_USER_HOST=1
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_USER_FG=100
+export ALIEN_SECTION_USER_BG=150
+```
+
+#### `path`-section
+
+To change the number of path-components to display:
+
+```bash
+export ALIEN_SECTION_PATH_COMPONENTS=2
+```
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_PATH_FG=100
+export ALIEN_SECTION_PATH_BG=150
+```
+
+#### `vcs_branch`-section
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_VCS_BRANCH_FG=100
+export ALIEN_SECTION_VCS_BRANCH_BG=150
+```
+
+#### `vcs_status`-section
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_VCS_STATUS_FG=100
+export ALIEN_SECTION_VCS_STATUS_BG=150
+```
+
+#### `vcs_dirty`-section
+
+To change colors:
+
+```bash
+export ALIEN_SECTION_VCS_DIRTY_FG=100
+export ALIEN_SECTION_VCS_DIRTY_BG=150
+```
+
+### color scheme
 
 **add all configurations before plugin definitions**
 
@@ -185,148 +344,7 @@ Then activate the theme using:
 export ALIEN_CUSTOM_THEME_PATH=/path/to/custom/theme.zsh
 ```
 
-###### prompt symbol
-
-To change the symbol of the input-prompt:
-
-```bash
-export ALIEN_PROMPT_SYM=
-```
-
-To change colors:
-
-```bash
-export ALIEN_PROMPT_FG=100
-```
-
-###### section seperator
-
-To change the section-separator:
-
-```bash
-export ALIEN_SECTION_SEP_SYM=
-```
-
-###### exit section
-
-To disable section:
-
-```bash
-export ALIEN_SECTION_EXIT_ENABLE=0
-```
-
-To disable the numeric exit-code:
-
-```bash
-export ALIEN_SECTION_EXIT_CODE=0
-```
-
-To change colors:
-
-```bash
-export ALIEN_SECTION_EXIT_FG=100
-export ALIEN_SECTION_EXIT_BG=150
-export ALIEN_SECTION_EXIT_BG_ERROR=200
-```
-
-###### time section
-
-To disable section:
-
-```bash
-export ALIEN_SECTION_TIME_ENABLE=0
-```
-
-To change the format::
-
-```bash
-export ALIEN_SECTION_TIME_FORMAT=%H:%M:%S # default is %r
-```
-
-To change colors:
-
-```bash
-export ALIEN_SECTION_TIME_FG=100
-export ALIEN_SECTION_TIME_BG=150
-```
-
-###### battery section
-
-To disable section:
-
-```bash
-export ALIEN_SECTION_BATTERY_ENABLE=0
-```
-
-To change colors:
-
-```bash
-export ALIEN_SECTION_BATTERY_FG=100
-export ALIEN_SECTION_BATTERY_BG=150
-```
-
-###### user section
-
-To disable section:
-
-```bash
-export ALIEN_SECTION_USER_ENABLE=0
-```
-
-To show the hostname:
-
-```bash
-export ALIEN_SECTION_USER_HOST=1
-```
-
-To change colors:
-
-```bash
-export ALIEN_SECTION_USER_FG=100
-export ALIEN_SECTION_USER_BG=150
-```
-
-###### path section
-
-To disable section:
-
-```bash
-export ALIEN_SECTION_PATH_ENABLE=0
-```
-
-To change the number of path-components to display:
-
-```bash
-export ALIEN_SECTION_PATH_COMPONENTS=2
-```
-
-To change colors:
-
-```bash
-export ALIEN_SECTION_PATH_FG=100
-export ALIEN_SECTION_PATH_BG=150
-```
-
-###### vcs section
-
-To disable section:
-
-```bash
-export ALIEN_SECTION_VCS_ENABLE=0
-```
-
-To change colors:
-
-```bash
-export ALIEN_SECTION_VCS_BRANCH_FG=100
-export ALIEN_SECTION_VCS_BRANCH_BG=150
-export ALIEN_SECTION_VCS_STATUS_FG=100
-export ALIEN_SECTION_VCS_STATUS_BG=150
-export ALIEN_SECTION_VCS_DIRTY_FG=100
-export ALIEN_SECTION_VCS_DIRTY_BG=150
-```
-
-###### Keep previous PROMPT:
+### Keep previous PROMPT:
 
 ```bash
 export ALIEN_KEEP_PROMPT=1
@@ -334,7 +352,7 @@ export ALIEN_KEEP_PROMPT=1
 
 This will keep previous prompt while new prompt is being rendered.
 
-###### nerd font
+### nerd font
 
 Enable Nerd Font
 
@@ -343,6 +361,7 @@ export USE_NERD_FONT=1
 ```
 
 _*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
+
 
 ### promptlib-zsh Configs:
 
