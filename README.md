@@ -273,10 +273,10 @@ To disable section:
 export ALIEN_SECTION_USER_ENABLE=0
 ```
 
-To hide the hostname:
+To show the hostname:
 
 ```bash
-export ALIEN_SECTION_USER_HOST=0
+export ALIEN_SECTION_USER_HOST=1
 ```
 
 To change colors:
