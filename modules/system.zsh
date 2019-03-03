@@ -6,7 +6,7 @@ alien_user_info(){
   else
     [[ -n "$SUDO_USER" && "$SUDO_USER" != "${_user}" ]] && __user="$USER($SUDO_USER)" || __user="$USER"
   fi
-  if [[ ${ALIEN_SECTION_USER_HOST} != 0 ]]; then
+  if [[ ${ALIEN_SECTION_USER_HOST} == 1 ]]; then
     __user+="@%M"
   fi
   echo -n "${__user}"
