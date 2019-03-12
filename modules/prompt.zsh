@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-ALIEN_PROMPT_SECTIONS=()
-
-alien_colorized() {
+alien_prompt_colorize() {
   local __content="$1"
   local __fg="$2"
   local __bg="$3"
@@ -13,88 +11,83 @@ alien_colorized() {
   [[ -n "$__fg" ]] && echo -en "%f"
 }
 
-alien_prompt_append_section() {
-  local __content=$1
-  local __fg=$2
-  local __bg=$3
-  local __sep=$4
-  ALIEN_PROMPT_SECTIONS+=("$__content","$__fg","$__bg","$__sep")
-}
-
-alien_prompt_prepend_section() {
-  local __content=$1
-  local __fg=$2
-  local __bg=$3
-  local __sep=$4
-  ALIEN_PROMPT_SECTIONS=("$__content","$__fg","$__bg","$__sep" ${ALIEN_PROMPT_SECTIONS[@]})
-}
-
-alien_prompt_render() {
+alien_prompt_render_left() {
+  [[ ${#ALIEN_SECTIONS_LEFT} -ne 0 ]] || return
+  local __render_mode=$1
+  local __separator=$ALIEN_SECTIONS_LEFT_SEP_SYM
   local __last_bg=
   local __last_sep=
-  for section in $ALIEN_PROMPT_SECTIONS; do
-    # set read-delimiter to \0 and add it to $section in order to allow \n in content
-    IFS=',' read -d"\0" __content __fg __bg __sep <<< "${section}\0"
-    [[ -n "$__last_sep" ]] && alien_colorized "$__last_sep" "$__last_bg" "$__bg"
-    __last_bg="$__bg"
-    __last_sep="$__sep"
-    alien_colorized "$__content" "$__fg" "$__bg"
+  for section in $ALIEN_SECTIONS_LEFT; do
+    # section can define a render-mode in which it will be rendered
+    # render-mode is defined by appending :<mode>
+    IFS=":" read __section_name __section_render_mode <<< $section
+    local __section_function="alien_prompt_section_${__section_name}"
+    # check if a function is defined for the section
+    if whence -w $__section_function >/dev/null && \
+      (
+        [[ -z "$__section_render_mode" ]] || \
+        [[ "$__section_render_mode" == "$__render_mode" ]] \
+      )
+    then
+      # declare variable in which the section-function writes its information
+      typeset -A __section=()
+      $__section_function
+      # skip section if section-function returned false
+      [[ $? -ne 0 ]] && continue
+      local __content=${__section[content]}
+      local __fg=${__section[foreground]}
+      local __bg=${__section[background]}
+      local __sep=${__section[separator]+${__section[separator]}}
+      [[ -n "$__last_sep" ]] && alien_prompt_colorize "$__last_sep" "$__last_bg" "$__bg"
+      __last_bg="$__bg"
+      [[ -n $__sep ]] && __last_sep="$__separator" || __last_sep=""
+      alien_prompt_colorize "$__content" "$__fg" "$__bg"
+    fi
   done
-  alien_colorized "$__last_sep" "$__last_bg"
+  [[ -n "$__last_sep" ]] && alien_prompt_colorize "$__last_sep" "$__last_bg"
 }
 
-alien_prompt_start() {
-  ALIEN_PROMPT_SECTIONS=()
-  # time section
-  if [[ $ALIEN_SECTION_TIME_ENABLE != 0 ]]; then
-    alien_prompt_append_section " $(alien_time_info) " \
-      $ALIEN_SECTION_TIME_FG $ALIEN_SECTION_TIME_BG $ALIEN_SECTION_SEP_SYM
+alien_prompt_render_right() {
+  [[ ${#ALIEN_SECTIONS_RIGHT} -ne 0 ]] || return
+  local __render_mode=$1
+  local __separator=$ALIEN_SECTIONS_RIGHT_SEP_SYM
+  local __last_bg=
+  local __newline_in_left=
+  local __rprompt_prefix=
+  local __rprompt_suffix=
+  # using ZLE_RPROMPT_INDENT=0 causes a bug, therefore we emulate it in this way
+  echo -ne "%1{  %}"
+  # if there is a newline in PROMPT we have to move the cursor to get RPROMPT on the first line
+  if [[ ${ALIEN_SECTIONS_LEFT[(r)newline]} == newline ]]; then
+    __rprompt_prefix='%{'$'\e[1A''%}' # one line up
+    __rprompt_suffix='%{'$'\e[1B''%}' # one line down
   fi
-  # battery section
-  if [[ $ALIEN_SECTION_BATTERY_ENABLE != 0 ]]; then
-    alien_prompt_append_section " $(alien_battery_stat) " \
-      $ALIEN_SECTION_BATTERY_FG $ALIEN_SECTION_BATTERY_BG $ALIEN_SECTION_SEP_SYM
-  fi
-  # user section
-  if [[ $ALIEN_SECTION_USER_ENABLE != 0 ]]; then
-    alien_prompt_append_section " $(alien_user_info) " \
-      $ALIEN_SECTION_USER_FG $ALIEN_SECTION_USER_BG $ALIEN_SECTION_SEP_SYM
-  fi
-  # path section
-  if [[ $ALIEN_SECTION_PATH_ENABLE != 0 ]]; then
-    if [[ -z $ALIEN_SECTION_PATH_COMPONENTS ]]; then
-      __path_info="%~"
-    else
-      __path_info="%${ALIEN_SECTION_PATH_COMPONENTS}~"
+  echo -ne $__rprompt_prefix
+  for section in $ALIEN_SECTIONS_RIGHT; do
+    # section can define a render-mode in which it will be rendered
+    # render-mode is defined by appending :<mode>
+    IFS=":" read __section_name __section_render_mode <<< $section
+    local __section_function="alien_prompt_section_${__section_name}"
+    # check if a function is defined for the section
+    if whence -w $__section_function >/dev/null && \
+      (
+        [[ -z "$__section_render_mode" ]] || \
+        [[ "$__section_render_mode" == "$__render_mode" ]] \
+      )
+    then
+      # declare variable in which the section-function writes its information
+      typeset -A __section=()
+      $__section_function
+      # skip section if section-function returned false
+      [[ $? -ne 0 ]] && continue
+      local __content=${__section[content]}
+      local __fg=${__section[foreground]}
+      local __bg=${__section[background]}
+      local __sep=${__section[separator]+${__section[separator]}}
+      [[ -n $__sep ]] && alien_prompt_colorize "$__separator" "$__bg" $__last_bg
+      __last_bg="$__bg"
+      alien_prompt_colorize "$__content" "$__fg" "$__bg"
     fi
-    alien_prompt_append_section " ${__path_info} " \
-      $ALIEN_SECTION_PATH_FG $ALIEN_SECTION_PATH_BG $ALIEN_SECTION_SEP_SYM
-  fi
-  # exit section
-  if [[ $ALIEN_SECTION_EXIT_ENABLE != 0 ]]; then
-    # determine background-color of first section
-    IFS=',' read -d"\0" __content __fg __bg __sep <<< "${ALIEN_PROMPT_SECTIONS[1]}\0"
-    # prepend exit-code section
-    local __exit_code_info="%(?"
-    __exit_code_info+=".$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG $__bg)"
-    if [[ $ALIEN_SECTION_EXIT_CODE != 0 ]]; then
-      __exit_code_info+=".$(alien_colorized " %? " $ALIEN_SECTION_EXIT_FG $ALIEN_SECTION_EXIT_BG_ERROR)"
-      __exit_code_info+="$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG_ERROR $__bg)"
-    else
-      __exit_code_info+=".$(alien_colorized $ALIEN_SECTION_SEP_SYM $ALIEN_SECTION_EXIT_BG_ERROR $__bg)"
-    fi
-    __exit_code_info+=")"
-    alien_prompt_prepend_section $__exit_code_info
-  fi
-}
-
-alien_prompt_end() {
-  # newline
-  alien_prompt_append_section $'\n'
-  # ssh-client section
-  alien_prompt_append_section "$(alien_ssh_client)" $ALIEN_SECTION_SSH_FG
-  # venv section
-  alien_prompt_append_section "$(alien_venv)" $ALIEN_SECTION_VENV_FG
-  # prompt
-  alien_prompt_append_section "%B${ALIEN_PROMPT_SYM}%b " $ALIEN_PROMPT_FG
+  done
+  echo -ne $__rprompt_suffix
 }
