@@ -21,9 +21,9 @@ terminal as you would normally.
 alien theme is **independent** of any library like Oh-My-Zsh or Prezto. Whatever it needs already included inside.
 The only exception is font. You need to **install the powerline patched fonts** to properly display the prompt.
 
-## Asciicast v1.0.3
+## Asciicast v2.0.0
 
-[![asciicast](http://asciinema.org/a/162085.svg)](https://asciinema.org/a/162085?cols=80&rows=20)
+[![asciicast](http://asciinema.org/a/237118.svg)](http://asciinema.org/a/237118)
 
 ## Requirements
 
