@@ -56,7 +56,7 @@ alien_prompt_render_right() {
   local __rprompt_prefix=
   local __rprompt_suffix=
   # using ZLE_RPROMPT_INDENT=0 causes a bug, therefore we emulate it in this way
-  echo -ne "%1{  %}"
+  echo -ne "%1{ %}"
   # if there is a newline in PROMPT we have to move the cursor to get RPROMPT on the first line
   if [[ ${ALIEN_SECTIONS_LEFT[(r)newline]} == newline ]]; then
     __rprompt_prefix='%{'$'\e[1A''%}' # one line up
