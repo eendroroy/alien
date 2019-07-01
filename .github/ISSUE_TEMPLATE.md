@@ -26,8 +26,10 @@
 
 * **Please tell us about your environment:**
 
+- Terminal emulator (and version)
 - Plugin Manager: [antigen | zplug | oh-my-zsh | ... ]
 - ZSH Version
+- Operating System (and version)
 
 
 
