@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# shellcheck disable=SC2206
+# shellcheck disable=SC2034
+
 alien_prompt_section_exit() {
   __section=(
     content "%(?.. %? )"
@@ -109,7 +112,8 @@ alien_prompt_section_newline() {
 }
 
 alien_prompt_section_ssh() {
-  local __ssh_info=$(alien_ssh_client)
+  local __ssh_info
+  __ssh_info=$(alien_ssh_client)
   [[ -n $__ssh_info ]] || return 1
   __section=(
     content "${__ssh_info}"
@@ -118,7 +122,8 @@ alien_prompt_section_ssh() {
 }
 
 alien_prompt_section_venv() {
-  local __venv_info=$(alien_venv)
+  local __venv_info
+  __venv_info=$(alien_venv)
   [[ -n $__venv_info ]] || return 1
   __section=(
     content "(${__venv_info}) "

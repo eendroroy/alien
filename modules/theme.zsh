@@ -13,7 +13,7 @@ alien_load_theme(){
     if [[ -f "${ALIEN_CUSTOM_THEME_PATH}" ]]; then
       source "${ALIEN_CUSTOM_THEME_PATH}"
     else
-      echo "\n  --> (WARN) theme ${ALIEN_CUSTOM_THEME_PATH} not found. Loading default ..."
+      printf "\n  --> (WARN) theme %s not found. Loading default ..." "${ALIEN_CUSTOM_THEME_PATH}"
       source "${THEME_DIR}/blue.zsh"
     fi
   fi

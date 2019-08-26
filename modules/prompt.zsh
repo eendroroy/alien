@@ -20,14 +20,11 @@ alien_prompt_render_left() {
   for section in $ALIEN_SECTIONS_LEFT; do
     # section can define a render-mode in which it will be rendered
     # render-mode is defined by appending :<mode>
-    IFS=":" read __section_name __section_render_mode <<< $section
+    IFS=":" read -r __section_name __section_render_mode <<< "$section"
     local __section_function="alien_prompt_section_${__section_name}"
     # check if a function is defined for the section
-    if whence -w $__section_function >/dev/null && \
-      (
-        [[ -z "$__section_render_mode" ]] || \
-        [[ "$__section_render_mode" == "$__render_mode" ]] \
-      )
+    if whence -w "$__section_function" >/dev/null && \
+      { [[ -z "$__section_render_mode" ]] || [[ "$__section_render_mode" == "$__render_mode" ]] ;}
     then
       # declare variable in which the section-function writes its information
       typeset -A __section=()
@@ -66,14 +63,11 @@ alien_prompt_render_right() {
   for section in $ALIEN_SECTIONS_RIGHT; do
     # section can define a render-mode in which it will be rendered
     # render-mode is defined by appending :<mode>
-    IFS=":" read __section_name __section_render_mode <<< $section
+    IFS=":" read -r __section_name __section_render_mode <<< $section
     local __section_function="alien_prompt_section_${__section_name}"
     # check if a function is defined for the section
-    if whence -w $__section_function >/dev/null && \
-      (
-        [[ -z "$__section_render_mode" ]] || \
-        [[ "$__section_render_mode" == "$__render_mode" ]] \
-      )
+    if whence -w "$__section_function" >/dev/null && \
+      { [[ -z "$__section_render_mode" ]] || [[ "$__section_render_mode" == "$__render_mode" ]] ;}
     then
       # declare variable in which the section-function writes its information
       typeset -A __section=()
