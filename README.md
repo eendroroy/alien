@@ -295,8 +295,8 @@ ALIEN_SECTION_SSH_FG=238
 
 ALIEN_SECTION_VENV_FG=238
 
-PLIB_GIT_TRACKED_COLOR=193
-PLIB_GIT_UNTRACKED_COLOR=87
+ALIEN_GIT_TRACKED_COLOR=193
+ALIEN_GIT_UN_TRACKED_COLOR=87
 ```
 
 Or creating a new theme file:
@@ -336,8 +336,8 @@ alien_theme(){
 
   ALIEN_SECTION_VENV_FG=238
 
-  PLIB_GIT_TRACKED_COLOR=193
-  PLIB_GIT_UNTRACKED_COLOR=87
+  ALIEN_GIT_TRACKED_COLOR=193
+  ALIEN_GIT_UN_TRACKED_COLOR=87
 }
 ```
 
@@ -377,22 +377,15 @@ export ALIEN_HG_SYM=H
 export ALIEN_SVN_SYM=S
 export ALIEN_BRANCH_SYM=
 # Symbols from promptlib
-export PLIB_GIT_ADD_SYM=+
-export PLIB_GIT_DEL_SYM=-
-export PLIB_GIT_MOD_SYM=⭑
-export PLIB_GIT_NEW_SYM=?
-export PLIB_GIT_PUSH_SYM=↑
-export PLIB_GIT_PULL_SYM=↓
+export ALIEN_GIT_ADD_SYM=+
+export ALIEN_GIT_DEL_SYM=-
+export ALIEN_GIT_MOD_SYM=⭑
+export ALIEN_GIT_NEW_SYM=?
+export ALIEN_GIT_PUSH_SYM=↑
+export ALIEN_GIT_PULL_SYM=↓
 ```
 
 _Note: this overrides `USE_NERD_FONT` configuration._
-
-#### customize colors
-
-```bash
-export PLIB_GIT_TRACKED_COLOR=green
-export PLIB_GIT_UNTRACKED_COLOR=red
-```
 
 ## Libraries Used
 
