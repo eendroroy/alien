@@ -126,7 +126,7 @@ alien_prompt_section_venv() {
   __venv_info=$(alien_venv)
   [[ -n $__venv_info ]] || return 1
   __section=(
-    content "(${__venv_info}) "
+    content "${__venv_info} "
     foreground $ALIEN_SECTION_VENV_FG
   )
 }
