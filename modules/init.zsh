@@ -23,7 +23,7 @@
 [[ -z "${ALIEN_PROMPT_SYM}" ]] && ALIEN_PROMPT_SYM='❱'
 [[ -z "${ALIEN_GIT_STASH_SYM}" ]] && ALIEN_GIT_STASH_SYM='@'
 
-if [[ ${USE_NERD_FONT} = 1 ]]; then
+if [[ ${ALIEN_USE_NERD_FONT} = 1 ]]; then
   [[ -z "${ALIEN_GIT_SYM}" ]]      && ALIEN_GIT_SYM=''
   [[ -z "${ALIEN_GIT_ADD_SYM}" ]]  && ALIEN_GIT_ADD_SYM=''
   [[ -z "${ALIEN_GIT_DEL_SYM}" ]]  && ALIEN_GIT_DEL_SYM=''

@@ -236,31 +236,38 @@ in ~/.zshrc just add any from the following three lines before your `antigen the
 export ALIEN_THEME="blue"
 ```
 
-![blue](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/blue.png)
+![blue](screenshots/blue.png)
 
 ```bash
 export ALIEN_THEME="green"
 ```
 
-![green](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/green.png)
+![green](screenshots/green.png)
 
 ```bash
 export ALIEN_THEME="red"
 ```
 
-![red](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/red.png)
+![red](screenshots/red.png)
 
 ```bash
 export ALIEN_THEME="soft"
 ```
 
-![soft](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/soft.png)
+![soft](screenshots/soft.png)
 
 ```bash
 export ALIEN_THEME="gruvbox"
 ```
 
-![gruvbox](https://raw.githubusercontent.com/eendroroy/alien/master/screenshots/gruvbox.png)
+![gruvbox](screenshots/gruvbox.png)
+
+
+```bash
+export ALIEN_THEME="bnw"
+```
+
+![gruvbox](screenshots/bnw.png)
 
 
 **Custom Color**
@@ -360,7 +367,7 @@ This will keep previous prompt while new prompt is being rendered.
 Enable Nerd Font
 
 ```bash
-export USE_NERD_FONT=1
+export ALIEN_USE_NERD_FONT=1
 ```
 
 _*Note: [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)*_
@@ -385,7 +392,7 @@ export ALIEN_GIT_PUSH_SYM=↑
 export ALIEN_GIT_PULL_SYM=↓
 ```
 
-_Note: this overrides `USE_NERD_FONT` configuration._
+_Note: this overrides `ALIEN_USE_NERD_FONT` configuration._
 
 ## Libraries Used
 
