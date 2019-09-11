@@ -3,6 +3,15 @@
 # shellcheck disable=SC2206
 # shellcheck disable=SC2034
 
+alien_prompt_section_versions() {
+  __section=(
+    content " $(alien_version_prompt)"
+    foreground $ALIEN_PROMPT_FG
+    background $ALIEN_SECTION_VERSION_BG
+    separator 1
+  )
+}
+
 alien_prompt_section_exit() {
   __section=(
     content "%(?.. %? )"
