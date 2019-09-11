@@ -19,6 +19,7 @@ source "${THEME_ROOT}/modules/hg.zsh"
 source "${THEME_ROOT}/modules/svn.zsh"
 source "${THEME_ROOT}/modules/async.zsh"
 source "${THEME_ROOT}/modules/python.zsh"
+source "${THEME_ROOT}/modules/version.zsh"
 
 function precmd(){
   autoload -U add-zsh-hook
