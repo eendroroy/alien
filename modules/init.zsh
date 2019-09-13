@@ -9,7 +9,7 @@
   vcs_branch:async
   vcs_status:async
   vcs_dirty:async
-  versions
+  versions:async
   newline
   ssh
   venv
