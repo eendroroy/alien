@@ -64,6 +64,8 @@ source ~/alien/alien.zsh
 
 ## Configuration
 
+**add all configurations before plugin definitions (or sourcing the theme)**
+
 ### sections
 
 To define the order of sections to display:
@@ -237,8 +239,6 @@ Supported versions:
 `GO` `GO_S` `ELIXIR` `ELIXIR_S` `CRYSTAL` `CRYSTAL_S` `NODE` `NODE_S` `PHP` `PHP_S`
 
 ### color scheme
-
-**add all configurations before plugin definitions**
 
 you can chose from 3 different color schemes (blue is the default)
 
