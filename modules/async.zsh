@@ -3,6 +3,7 @@
 # shellcheck disable=SC2034
 
 function alien_left_prompt_update_completed(){
+#  exec &>/dev/tty
   PROMPT=$(echo "${3}" | tr -s ' ')
   zle && zle reset-prompt
 }
@@ -16,12 +17,14 @@ function alien_left_prompt_update() {
 
 alien_async_left_prompt(){
   async_init
-  async_start_worker "left_prompt_$$" -n
-  async_register_callback "left_prompt_$$" alien_left_prompt_update_completed
-  async_job "left_prompt_$$" alien_left_prompt_update "$(pwd)" "${VIRTUAL_ENV}" "${SSH_CLIENT}"
+  async_stop_worker left_prompt
+  async_start_worker left_prompt -n
+  async_register_callback left_prompt alien_left_prompt_update_completed
+  async_job left_prompt alien_left_prompt_update "$(pwd)" "${VIRTUAL_ENV}" "${SSH_CLIENT}"
 }
 
 function alien_right_prompt_update_completed(){
+#  exec &>/dev/tty
   RPROMPT=$(echo "${3}" | tr -s ' ')
   zle && zle reset-prompt
 }
@@ -35,7 +38,8 @@ function alien_right_prompt_update() {
 
 alien_async_right_prompt(){
   async_init
-  async_start_worker "right_prompt_$$" -n
-  async_register_callback "right_prompt_$$" alien_right_prompt_update_completed
-  async_job "right_prompt_$$" alien_right_prompt_update "$(pwd)" "${VIRTUAL_ENV}" "${SSH_CLIENT}"
+  async_stop_worker right_prompt
+  async_start_worker right_prompt -n
+  async_register_callback right_prompt alien_right_prompt_update_completed
+  async_job right_prompt alien_right_prompt_update "$(pwd)" "${VIRTUAL_ENV}" "${SSH_CLIENT}"
 }
