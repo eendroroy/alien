@@ -240,7 +240,7 @@ Supported versions:
 
 ### color scheme
 
-you can chose from 3 different color schemes (blue is the default)
+you can chose from 6 different color schemes (blue is the default)
 
 in ~/.zshrc just add any from the following three lines before your `antigen theme ...` line
 
