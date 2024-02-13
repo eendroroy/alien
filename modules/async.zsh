@@ -9,7 +9,7 @@ function alien_left_prompt_update_completed(){
 }
 
 function alien_left_prompt_update() {
-  cd "${1}" || return
+  builtin cd "${1}" || return
   VIRTUAL_ENV=$2
   SSH_CLIENT=$3
   echo -n "$(alien_prompt_render_left 'async')"
@@ -30,7 +30,7 @@ function alien_right_prompt_update_completed(){
 }
 
 function alien_right_prompt_update() {
-  cd "${1}" || return
+  builtin cd "${1}" || return
   VIRTUAL_ENV=$2
   SSH_CLIENT=$3
   echo -n "$(alien_prompt_render_right 'async')"
