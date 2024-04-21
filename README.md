@@ -53,7 +53,7 @@ Add the following line to your `.zshrc` depending on your zsh plugin manager
 ```bash
 git clone https://github.com/eendroroy/alien.git
 cd alien
-git submodule update --init --recursive
+git submodule update --init --recursive --remote
 ```
 
 Add the following line to your `~/.zshrc`
